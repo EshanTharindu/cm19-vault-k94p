@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 19th Birthday</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100vh;
+      background-color: #07040a;
+      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 20% 18%, rgba(244, 114, 182, 0.16), transparent 46%),
+        radial-gradient(circle at 80% 22%, rgba(168, 85, 247, 0.16), transparent 48%),
+        radial-gradient(circle at 50% 88%, rgba(251, 191, 36, 0.10), transparent 52%),
+        linear-gradient(180deg, #07040a 0%, #13081a 52%, #07040a 100%);
+    }
+
+    /* Ambient Glowing Orbs (strictly pointer-events: none) */
+    @keyframes ambientDriftA {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(24px, -18px, 0) scale(1.06); }
+    }
+
+    @keyframes ambientDriftB {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(-22px, 16px, 0) scale(1.05); }
+    }
+
+    .orb-drift-a { animation: ambientDriftA 16s ease-in-out infinite; }
+    .orb-drift-b { animation: ambientDriftB 20s ease-in-out infinite; }
+
+    /* Gentle Ken Burns Zoom & Drift Variants */
+    @keyframes kbZoomA {
+      0% { transform: scale(1.0) translate3d(-1%, -0.6%, 0); }
+      100% { transform: scale(1.07) translate3d(1%, 0.6%, 0); }
+    }
+
+    @keyframes kbZoomB {
+      0% { transform: scale(1.07) translate3d(1%, -0.5%, 0); }
+      100% { transform: scale(1.0) translate3d(-1%, 0.6%, 0); }
+    }
+
+    @keyframes kbZoomC {
+      0% { transform: scale(1.01) translate3d(0%, 0.8%, 0); }
+      100% { transform: scale(1.07) translate3d(0%, -0.8%, 0); }
+    }
+
+    .kb-a { animation: kbZoomA 3.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+    .kb-b { animation: kbZoomB 3.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+    .kb-c { animation: kbZoomC 3.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+    /* Screen visibility & smooth fade */
+    .screen-view {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.55s ease;
+    }
+
+    .screen-view.is-active {
+      display: flex;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Glowing Pill Buttons */
+    .glow-pill {
+      position: relative;
+      z-index: 30;
+      cursor: pointer;
+      overflow: hidden;
+      transition:
+        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.32s ease,
+        border-color 0.32s ease;
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.16),
+        0 14px 40px -8px rgba(244, 114, 182, 0.38),
+        0 0 30px -6px rgba(168, 85, 247, 0.28);
+    }
+
+    .glow-pill:hover {
+      transform: translateY(-2px) scale(1.02);
+      border-color: rgba(249, 168, 212, 0.6);
+      box-shadow:
+        0 0 0 1px rgba(249, 168, 212, 0.45),
+        0 18px 46px -6px rgba(244, 114, 182, 0.52),
+        0 0 38px -4px rgba(168, 85, 247, 0.38);
+    }
+
+    .glow-pill:active {
+      transform: scale(0.97);
+    }
+
+    /* Frosted Liquid-Glass Wish Card */
+    .liquid-glass {
+      position: relative;
+      background: linear-gradient(
+        145deg,
+        rgba(22, 14, 32, 0.56) 0%,
+        rgba(12, 8, 20, 0.48) 52%,
+        rgba(26, 15, 34, 0.58) 100%
+      );
+      backdrop-filter: blur(22px) saturate(160%);
+      -webkit-backdrop-filter: blur(22px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      box-shadow:
+        0 28px 80px rgba(0, 0, 0, 0.68),
+        0 0 60px rgba(244, 114, 182, 0.20),
+        inset 0 1px 1px rgba(255, 255, 255, 0.45),
+        inset 0 -1px 1px rgba(249, 168, 212, 0.24);
+    }
+
+    .liquid-glass::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(
+        circle at 16% 8%,
+        rgba(255, 255, 255, 0.30) 0%,
+        rgba(244, 114, 182, 0.08) 34%,
+        transparent 68%
+      );
+    }
+
+    .wish-scroll::-webkit-scrollbar {
+      width: 5px;
+    }
+    .wish-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .wish-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.24);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen w-full text-slate-100 antialiased selection:bg-pink-400/25 selection:text-pink-100">
+  <!-- Continuous Background Audio (song.mp3 with raw GitHub + relative fallback) -->
+  <audio id="bg-audio" preload="auto" loop playsinline>
+    <source src="https://raw.githubusercontent.com/EshanTharindu/cm19-vault-k94p/main/song.mp3" type="audio/mpeg" />
+    <source src="./song.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Ambient Floating Rose/Violet Particle Canvas (never captures clicks) -->
+  <canvas
+    id="ambient-canvas"
+    style="pointer-events: none;"
+    class="pointer-events-none fixed inset-0 z-10 h-full w-full"
+    aria-hidden="true"
+  ></canvas>
+
+  <!-- Ambient Glow Orbs (never captures clicks) -->
+  <div style="pointer-events: none;" class="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+    <div class="orb-drift-a absolute -top-24 -left-24 h-80 w-80 rounded-full bg-pink-500/15 blur-3xl sm:h-[26rem] sm:w-[26rem]"></div>
+    <div class="orb-drift-b absolute top-1/3 -right-24 h-80 w-80 rounded-full bg-purple-500/15 blur-3xl sm:h-[28rem] sm:w-[28rem]"></div>
+    <div class="orb-drift-a absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-amber-300/10 blur-3xl"></div>
+  </div>
+
+  <!-- Optional Top-Right Sound Toggle (hidden until audio starts) -->
+  <button
+    id="btn-mute"
+    type="button"
+    onclick="window.toggleAudioMute && window.toggleAudioMute()"
+    class="fixed top-4 right-4 z-50 hidden min-h-[42px] cursor-pointer items-center gap-2 rounded-full border border-white/15 bg-black/55 px-4 py-2 text-xs font-medium text-slate-200 shadow-lg backdrop-blur-md transition hover:border-pink-300/45 hover:bg-black/75 sm:top-6 sm:right-6"
+  >
+    <span id="mute-icon" aria-hidden="true">🔊</span>
+    <span id="mute-text" class="text-[11px] tracking-wider uppercase">Sound On</span>
+  </button>
+
+  <!-- SCREEN 1: INTRO -->
+  <section
+    id="screen-1"
+    class="screen-view is-active z-20 flex-col items-center justify-center px-5 text-center"
+  >
+    <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-pink-300/25 bg-white/[0.04] px-4 py-1.5 text-[11px] font-medium tracking-[0.22em] text-pink-200/90 uppercase backdrop-blur-sm">
+      <span class="h-1.5 w-1.5 rounded-full bg-pink-300 shadow-[0_0_8px_rgba(249,168,212,0.9)]"></span>
+      Chapter Nineteen
+    </div>
+
+    <h1 class="font-serif text-4xl font-medium tracking-tight text-white sm:text-5xl md:text-6xl">
+      Every Little Moment
+      <span class="mt-1 block italic font-normal text-pink-200/90">Still Shines</span>
+    </h1>
+
+    <p class="mt-4 max-w-md text-sm leading-relaxed text-slate-300/80 sm:text-base">
+      A little corner of memories made just for you.
+    </p>
+
+    <div class="mt-9">
+      <button
+        id="btn-ready"
+        type="button"
+        onclick="window.goToScreen2 && window.goToScreen2()"
+        class="glow-pill inline-flex min-h-[56px] items-center justify-center rounded-full border border-pink-200/35 bg-gradient-to-r from-pink-500/25 via-purple-500/25 to-amber-300/20 px-9 py-3.5 text-sm font-medium tracking-wider text-white backdrop-blur-md sm:px-11 sm:text-base"
+      >
+        ready to surprise
+      </button>
+    </div>
+  </section>
+
+  <!-- SCREEN 2: CHILDHOOD MEMORIES SLIDESHOW -->
+  <section
+    id="screen-2"
+    class="screen-view z-20 flex-col items-center justify-center px-4"
+  >
+    <div
+      style="width: min(92vw, 760px); height: min(74vh, 580px);"
+      class="relative overflow-hidden rounded-3xl border border-white/15 bg-[#0c0712] shadow-[0_26px_85px_rgba(0,0,0,0.88),0_0_55px_rgba(244,114,182,0.16)]"
+    >
+      <!-- Dual Crossfade Layers (no progress bar, no filename labels) -->
+      <div
+        id="child-layer-a"
+        style="pointer-events: none; transition: opacity 1.1s ease-in-out;"
+        class="pointer-events-none absolute inset-0 h-full w-full opacity-0"
+      >
+        <img id="child-blur-a" alt="" style="width:100%;height:100%;object-fit:cover;" class="absolute inset-0 scale-125 opacity-35 blur-2xl saturate-150 select-none" />
+        <img id="child-img-a" alt="" style="width:100%;height:100%;object-fit:contain;" class="relative z-10 select-none" />
+      </div>
+
+      <div
+        id="child-layer-b"
+        style="pointer-events: none; transition: opacity 1.1s ease-in-out;"
+        class="pointer-events-none absolute inset-0 h-full w-full opacity-0"
+      >
+        <img id="child-blur-b" alt="" style="width:100%;height:100%;object-fit:cover;" class="absolute inset-0 scale-125 opacity-35 blur-2xl saturate-150 select-none" />
+        <img id="child-img-b" alt="" style="width:100%;height:100%;object-fit:contain;" class="relative z-10 select-none" />
+      </div>
+    </div>
+
+    <button
+      id="btn-skip-childhood"
+      type="button"
+      onclick="window.goToScreen3 && window.goToScreen3()"
+      class="fixed right-4 bottom-5 z-40 inline-flex min-h-[44px] cursor-pointer items-center gap-1.5 rounded-full border border-white/20 bg-white/[0.08] px-4 py-2 text-xs font-medium tracking-wider text-slate-100 shadow-lg backdrop-blur-md transition hover:border-pink-300/50 hover:bg-white/[0.15] sm:right-7 sm:bottom-7"
+    >
+      Skip →
+    </button>
+  </section>
+
+  <!-- SCREEN 3: TRANSITION TO PRESENTS -->
+  <section
+    id="screen-3"
+    class="screen-view z-20 flex-col items-center justify-center px-5 text-center"
+  >
+    <button
+      id="btn-to-presents"
+      type="button"
+      onclick="window.goToScreen4 && window.goToScreen4()"
+      class="glow-pill inline-flex min-h-[58px] items-center justify-center rounded-full border border-pink-200/40 bg-gradient-to-r from-pink-500/25 via-purple-500/25 to-rose-300/20 px-9 py-4 text-sm font-medium tracking-wider text-white backdrop-blur-md sm:px-11 sm:text-base"
+    >
+      now, meet the birthday girl ✨
+    </button>
+  </section>
+
+  <!-- SCREEN 4: PRESENTS / HER MEMORIES SLIDESHOW -->
+  <section
+    id="screen-4"
+    class="screen-view z-20 flex-col items-center justify-center px-4"
+  >
+    <div
+      style="width: min(92vw, 760px); height: min(74vh, 580px);"
+      class="relative overflow-hidden rounded-3xl border border-white/15 bg-[#0c0712] shadow-[0_26px_85px_rgba(0,0,0,0.88),0_0_55px_rgba(244,114,182,0.16)]"
+    >
+      <!-- Dual Crossfade Layers (no progress bar, no filename labels) -->
+      <div
+        id="pres-layer-a"
+        style="pointer-events: none; transition: opacity 1.05s ease-in-out;"
+        class="pointer-events-none absolute inset-0 h-full w-full opacity-0"
+      >
+        <img id="pres-blur-a" alt="" style="width:100%;height:100%;object-fit:cover;" class="absolute inset-0 scale-125 opacity-35 blur-2xl saturate-150 select-none" />
+        <img id="pres-img-a" alt="" style="width:100%;height:100%;object-fit:contain;" class="relative z-10 select-none" />
+      </div>
+
+      <div
+        id="pres-layer-b"
+        style="pointer-events: none; transition: opacity 1.05s ease-in-out;"
+        class="pointer-events-none absolute inset-0 h-full w-full opacity-0"
+      >
+        <img id="pres-blur-b" alt="" style="width:100%;height:100%;object-fit:cover;" class="absolute inset-0 scale-125 opacity-35 blur-2xl saturate-150 select-none" />
+        <img id="pres-img-b" alt="" style="width:100%;height:100%;object-fit:contain;" class="relative z-10 select-none" />
+      </div>
+    </div>
+
+    <button
+      id="btn-skip-presents"
+      type="button"
+      onclick="window.goToScreen5 && window.goToScreen5()"
+      class="fixed right-4 bottom-5 z-40 inline-flex min-h-[44px] cursor-pointer items-center gap-1.5 rounded-full border border-white/20 bg-white/[0.08] px-4 py-2 text-xs font-medium tracking-wider text-slate-100 shadow-lg backdrop-blur-md transition hover:border-pink-300/50 hover:bg-white/[0.15] sm:right-7 sm:bottom-7"
+    >
+      Skip →
+    </button>
+  </section>
+
+  <!-- SCREEN 5: FINAL TRIGGER -->
+  <section
+    id="screen-5"
+    class="screen-view z-20 flex-col items-center justify-center px-5 text-center"
+  >
+    <button
+      id="btn-to-wish"
+      type="button"
+      onclick="window.goToScreen6 && window.goToScreen6()"
+      class="glow-pill inline-flex min-h-[58px] items-center justify-center rounded-full border border-pink-200/40 bg-gradient-to-r from-pink-500/25 via-purple-500/25 to-amber-300/20 px-9 py-4 text-sm font-medium tracking-wider text-white backdrop-blur-md sm:px-11 sm:text-base"
+    >
+      One last thing from my heart..
+    </button>
+  </section>
+
+  <!-- SCREEN 6: FINAL LIQUID GLASS WISH REVEAL -->
+  <section
+    id="screen-6"
+    class="screen-view z-30 flex-col items-center justify-center overflow-hidden"
+  >
+    <!-- Full-bleed Wish Background -->
+    <img
+      id="wish-bg-img"
+      alt=""
+      style="pointer-events: none;"
+      class="pointer-events-none absolute inset-0 h-full w-full scale-105 object-cover transition-transform duration-[18000ms] ease-out select-none"
+    />
+
+    <!-- Darkened Contrast Overlay -->
+    <div
+      style="pointer-events: none;"
+      class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/50 via-black/38 to-black/65"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Centered Frosted Liquid-Glass Wish Card -->
+    <div class="relative z-20 flex h-full w-full items-center justify-center p-4 sm:p-6 md:p-10">
+      <article class="liquid-glass wish-scroll max-h-[86vh] w-full max-w-2xl overflow-y-auto rounded-[2rem] px-6 py-8 text-left sm:px-10 sm:py-10 md:px-12 md:py-12">
+        <div class="mb-5 flex items-center justify-between border-b border-white/15 pb-3.5">
+          <span class="text-[11px] font-medium tracking-[0.24em] text-pink-200/95 uppercase">
+            Happy 19th Birthday
+          </span>
+          <span class="text-sm text-amber-200/90" aria-hidden="true">✦</span>
+        </div>
+
+        <div class="space-y-4 font-serif text-lg leading-relaxed text-white sm:text-xl sm:leading-relaxed md:text-[22px]">
+          <p class="font-semibold text-pink-100">
+            Happy 19th Birthday, mge chuti mnikh.
+          </p>
+          <p class="text-white/95">
+            Looking back at those little childhood moments and seeing you step into nineteen now — it still amazes me how lucky I am to have you in my life. Every smile, every memory, and every frame of who you are means more to me than words could ever hold.
+          </p>
+          <p class="text-white/95">
+            You’re still my chuti mnikh, still my little angel, and nothing about how deeply I care for you will ever change. Watching you grow into the kind, radiant person you are today is my favorite thing in the world.
+          </p>
+          <p class="text-white/95">
+            I want to hear how nineteen feels to you, and I’m always right here beside you for every chapter of your story. More than anything, I wish you endless happiness, gentle days, and every little dream you hold onto coming true.
+          </p>
+          <p class="pt-1 font-semibold text-pink-100">
+            Happy nineteen, mge chuti mnikh.
+          </p>
+        </div>
+
+        <div class="mt-8 flex items-center justify-between border-t border-white/15 pt-4 text-xs text-slate-300/85">
+          <span class="font-serif italic text-base text-pink-200/95">With all my love</span>
+          <span class="text-[10px] tracking-[0.2em] text-slate-300/80 uppercase">Forever &amp; Always</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var RAW_BASE = 'https://raw.githubusercontent.com/EshanTharindu/cm19-vault-k94p/main/';
+
+      var CHILDHOOD_FILES = [
+        'childhood 1.jpg',
+        'childhood 2.jpg',
+        'childhood 3.jpg',
+        'childhood 4.jpg'
+      ];
+
+      var PRESENTS_FILES = [
+        'black frock 1.jpg',
+        'black frock 2.jpg',
+        'black frock 3.jpg',
+        'black frock 4.jpg',
+        'guitar 1.jpg',
+        'guitar 2.jpg',
+        'guitar 3.jpg',
+        'guitar 4.jpg',
+        'guitar 5.jpg',
+        'guitar 6.jpg',
+        'guitar 7.jpg',
+        'guitar 8.jpg',
+        'guitar 9.jpg',
+        'guitar 10.jpg',
+        'guitar 11.jpg',
+        'guitar 12.jpg',
+        'memo 1.jpg',
+        'memo 2.jpg',
+        'memo 3.jpg',
+        'memo 4.jpg',
+        'memo 5.jpg',
+        'memo 6.jpg',
+        'memo 7.jpg',
+        'memo 8.jpg',
+        'memo 9.jpg',
+        'memo 10.jpg'
+      ];
+
+      var WISH_BG_FILE = 'wish background.jpg';
+
+      var childhoodTimer = null;
+      var presentsTimer = null;
+      var audioFadeTimer = null;
+      var audioStarted = false;
+      var isMuted = false;
+
+      function getRawUrl(filename) {
+        return RAW_BASE + encodeURIComponent(filename);
+      }
+
+      function getRelativeUrl(filename) {
+        return './' + encodeURIComponent(filename);
+      }
+
+      /* Set image src with automatic raw -> relative -> placeholder fallback */
+      function setResilientImage(imgEl, blurEl, filename) {
+        try {
+          if (!imgEl) return;
+          var rawUrl = getRawUrl(filename);
+          var relUrl = getRelativeUrl(filename);
+          var fallbackSvg =
+            'data:image/svg+xml;utf8,' +
+            encodeURIComponent(
+              '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="100%" height="100%" fill="#13081a"/><text x="50%" y="50%" fill="#f9a8d4" font-family="sans-serif" font-size="28" text-anchor="middle" dominant-baseline="middle">✦</text></svg>'
+            );
+
+          imgEl.onerror = function () {
+            imgEl.onerror = function () {
+              imgEl.onerror = null;
+              imgEl.src = fallbackSvg;
+              if (blurEl) blurEl.src = fallbackSvg;
+            };
+            imgEl.src = relUrl;
+            if (blurEl) blurEl.src = relUrl;
+          };
+
+          imgEl.src = rawUrl;
+          if (blurEl) blurEl.src = rawUrl;
+        } catch (err) {}
+      }
+
+      /* Background non-blocking preloader */
+      function preloadList(files) {
+        try {
+          for (var i = 0; i < files.length; i++) {
+            (function (fname) {
+              var im = new Image();
+              im.onerror = function () {
+                var im2 = new Image();
+                im2.src = getRelativeUrl(fname);
+              };
+              im.src = getRawUrl(fname);
+            })(files[i]);
+          }
+        } catch (err) {}
+      }
+
+      /* Continuous Audio Controller (never blocks screen transitions) */
+      function startBackgroundAudio() {
+        try {
+          var audio = document.getElementById('bg-audio');
+          var muteBtn = document.getElementById('btn-mute');
+          if (!audio) return;
+
+          if (muteBtn) {
+            muteBtn.classList.remove('hidden');
+            muteBtn.classList.add('inline-flex');
+          }
+
+          if (audioStarted && !audio.paused) return;
+
+          audio.loop = true;
+          audio.muted = isMuted;
+          if (!audioStarted) {
+            audio.volume = 0.05;
+          }
+
+          var playPromise = audio.play();
+          if (playPromise && typeof playPromise.then === 'function') {
+            playPromise
+              .then(function () {
+                audioStarted = true;
+                fadeAudioVolume(audio, 0.85);
+              })
+              .catch(function () {
+                try {
+                  audio.src = './song.mp3';
+                  audio.load();
+                  var retry = audio.play();
+                  if (retry && typeof retry.catch === 'function') {
+                    retry.catch(function () {});
+                  }
+                } catch (e) {}
+              });
+          } else {
+            audioStarted = true;
+            audio.volume = 0.85;
+          }
+        } catch (err) {}
+      }
+
+      function fadeAudioVolume(audio, targetVol) {
+        try {
+          if (audioFadeTimer) clearInterval(audioFadeTimer);
+          audioFadeTimer = setInterval(function () {
+            try {
+              if (!audio || audio.paused) {
+                clearInterval(audioFadeTimer);
+                return;
+              }
+              if (audio.volume < targetVol - 0.03) {
+                audio.volume = Math.min(targetVol, audio.volume + 0.05);
+              } else {
+                audio.volume = targetVol;
+                clearInterval(audioFadeTimer);
+              }
+            } catch (e) {
+              clearInterval(audioFadeTimer);
+            }
+          }, 120);
+        } catch (err) {}
+      }
+
+      window.toggleAudioMute = function () {
+        try {
+          var audio = document.getElementById('bg-audio');
+          var icon = document.getElementById('mute-icon');
+          var text = document.getElementById('mute-text');
+          isMuted = !isMuted;
+          if (audio) {
+            audio.muted = isMuted;
+            if (!isMuted && audio.paused) {
+              audio.play().catch(function () {});
+            }
+          }
+          if (icon) icon.textContent = isMuted ? '🔇' : '🔊';
+          if (text) text.textContent = isMuted ? 'Muted' : 'Sound On';
+        } catch (err) {}
+      };
+
+      /* Immediate Synchronous Screen Switcher */
+      function activateScreen(screenId) {
+        try {
+          var ids = ['screen-1', 'screen-2', 'screen-3', 'screen-4', 'screen-5', 'screen-6'];
+          for (var i = 0; i < ids.length; i++) {
+            var el = document.getElementById(ids[i]);
+            if (!el) continue;
+            if (ids[i] === screenId) {
+              el.classList.add('is-active');
+              el.style.display = 'flex';
+              el.style.opacity = '1';
+              el.style.pointerEvents = 'auto';
+            } else {
+              el.classList.remove('is-active');
+              el.style.display = 'none';
+              el.style.opacity = '0';
+              el.style.pointerEvents = 'none';
+            }
+          }
+        } catch (err) {}
+      }
+
+      function clearAllSlideTimers() {
+        try {
+          if (childhoodTimer) {
+            clearTimeout(childhoodTimer);
+            childhoodTimer = null;
+          }
+          if (presentsTimer) {
+            clearTimeout(presentsTimer);
+            presentsTimer = null;
+          }
+        } catch (err) {}
+      }
+
+      /* Dual-Layer Slideshow Runner */
+      function runSlideshow(config) {
+        try {
+          var files = config.files;
+          var duration = config.duration;
+          var layerA = document.getElementById(config.layerAId);
+          var layerB = document.getElementById(config.layerBId);
+          var imgA = document.getElementById(config.imgAId);
+          var blurA = document.getElementById(config.blurAId);
+          var imgB = document.getElementById(config.imgBId);
+          var blurB = document.getElementById(config.blurBId);
+          var onDone = config.onDone;
+
+          var idx = 0;
+          var useA = true;
+          var kbList = ['kb-a', 'kb-b', 'kb-c'];
+
+          if (layerA) layerA.style.opacity = '0';
+          if (layerB) layerB.style.opacity = '0';
+
+          function step() {
+            try {
+              if (idx >= files.length) {
+                if (typeof onDone === 'function') onDone();
+                return;
+              }
+
+              var filename = files[idx];
+              var activeLayer = useA ? layerA : layerB;
+              var inactiveLayer = useA ? layerB : layerA;
+              var activeImg = useA ? imgA : imgB;
+              var activeBlur = useA ? blurA : blurB;
+              var kbClass = kbList[idx % kbList.length];
+
+              useA = !useA;
+              idx++;
+
+              if (activeImg) {
+                activeImg.classList.remove('kb-a', 'kb-b', 'kb-c');
+                void activeImg.offsetWidth;
+                activeImg.classList.add(kbClass);
+              }
+
+              setResilientImage(activeImg, activeBlur, filename);
+
+              if (activeLayer) activeLayer.style.opacity = '1';
+              if (inactiveLayer) inactiveLayer.style.opacity = '0';
+
+              var t = setTimeout(step, duration);
+              if (config.type === 'childhood') {
+                childhoodTimer = t;
+              } else {
+                presentsTimer = t;
+              }
+            } catch (e) {
+              if (typeof onDone === 'function') onDone();
+            }
+          }
+
+          step();
+        } catch (err) {
+          if (typeof config.onDone === 'function') config.onDone();
+        }
+      }
+
+      /* Navigation Actions (100% Synchronous Screen Switch + Parallel Media) */
+      window.goToScreen2 = function () {
+        try {
+          clearAllSlideTimers();
+          activateScreen('screen-2');
+          startBackgroundAudio();
+          preloadList(PRESENTS_FILES);
+          preloadList([WISH_BG_FILE]);
+
+          runSlideshow({
+            type: 'childhood',
+            files: CHILDHOOD_FILES,
+            duration: 3500,
+            layerAId: 'child-layer-a',
+            layerBId: 'child-layer-b',
+            imgAId: 'child-img-a',
+            blurAId: 'child-blur-a',
+            imgBId: 'child-img-b',
+            blurBId: 'child-blur-b',
+            onDone: function () {
+              window.goToScreen3();
+            }
+          });
+        } catch (err) {}
+      };
+
+      window.goToScreen3 = function () {
+        try {
+          clearAllSlideTimers();
+          activateScreen('screen-3');
+          startBackgroundAudio();
+        } catch (err) {}
+      };
+
+      window.goToScreen4 = function () {
+        try {
+          clearAllSlideTimers();
+          activateScreen('screen-4');
+          startBackgroundAudio();
+
+          runSlideshow({
+            type: 'presents',
+            files: PRESENTS_FILES,
+            duration: 3200,
+            layerAId: 'pres-layer-a',
+            layerBId: 'pres-layer-b',
+            imgAId: 'pres-img-a',
+            blurAId: 'pres-blur-a',
+            imgBId: 'pres-img-b',
+            blurBId: 'pres-blur-b',
+            onDone: function () {
+              window.goToScreen5();
+            }
+          });
+        } catch (err) {}
+      };
+
+      window.goToScreen5 = function () {
+        try {
+          clearAllSlideTimers();
+          activateScreen('screen-5');
+          startBackgroundAudio();
+        } catch (err) {}
+      };
+
+      window.goToScreen6 = function () {
+        try {
+          clearAllSlideTimers();
+          activateScreen('screen-6');
+          startBackgroundAudio();
+
+          var wishImg = document.getElementById('wish-bg-img');
+          setResilientImage(wishImg, null, WISH_BG_FILE);
+          if (wishImg) {
+            setTimeout(function () {
+              try {
+                wishImg.classList.remove('scale-105');
+                wishImg.classList.add('scale-110');
+              } catch (e) {}
+            }, 60);
+          }
+        } catch (err) {}
+      };
+
+      /* Bind Buttons via Both addEventListener and Inline onclick */
+      function bindButton(id, handler) {
+        try {
+          var btn = document.getElementById(id);
+          if (!btn) return;
+          btn.addEventListener('click', function (ev) {
+            try {
+              if (ev && typeof ev.preventDefault === 'function') ev.preventDefault();
+              handler();
+            } catch (e) {}
+          });
+        } catch (err) {}
+      }
+
+      /* Soft Ambient Particle Field */
+      function initAmbientParticles() {
+        try {
+          var canvas = document.getElementById('ambient-canvas');
+          if (!canvas) return;
+          var ctx = canvas.getContext('2d');
+          if (!ctx) return;
+
+          var width = 0;
+          var height = 0;
+          var particles = [];
+          var colors = [
+            'rgba(249, 168, 212, ',
+            'rgba(192, 132, 252, ',
+            'rgba(253, 224, 71, '
+          ];
+
+          function resize() {
+            try {
+              width = canvas.width = window.innerWidth;
+              height = canvas.height = window.innerHeight;
+            } catch (e) {}
+          }
+
+          resize();
+          window.addEventListener('resize', resize);
+
+          var count = Math.min(48, Math.max(22, Math.floor(window.innerWidth / 28)));
+          for (var i = 0; i < count; i++) {
+            particles.push({
+              x: Math.random() * width,
+              y: Math.random() * height,
+              r: 1 + Math.random() * 2.2,
+              vx: (Math.random() - 0.5) * 0.28,
+              vy: -0.15 - Math.random() * 0.35,
+              alpha: 0.2 + Math.random() * 0.45,
+              color: colors[i % colors.length]
+            });
+          }
+
+          function draw() {
+            try {
+              ctx.clearRect(0, 0, width, height);
+              for (var j = 0; j < particles.length; j++) {
+                var p = particles[j];
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.y < -10) {
+                  p.y = height + 10;
+                  p.x = Math.random() * width;
+                }
+                if (p.x < -10) p.x = width + 10;
+                if (p.x > width + 10) p.x = -10;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = p.color + p.alpha + ')';
+                ctx.fill();
+              }
+            } catch (e) {}
+            requestAnimationFrame(draw);
+          }
+
+          draw();
+        } catch (err) {}
+      }
+
+      function initApp() {
+        try {
+          bindButton('btn-ready', window.goToScreen2);
+          bindButton('btn-skip-childhood', window.goToScreen3);
+          bindButton('btn-to-presents', window.goToScreen4);
+          bindButton('btn-skip-presents', window.goToScreen5);
+          bindButton('btn-to-wish', window.goToScreen6);
+
+          preloadList(CHILDHOOD_FILES);
+          preloadList([WISH_BG_FILE]);
+          initAmbientParticles();
+        } catch (err) {}
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initApp);
+      } else {
+        initApp();
+      }
+    })();
+  </script>
+</body>
+</html>
