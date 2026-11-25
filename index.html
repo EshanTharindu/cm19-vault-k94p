@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Ready for this — 19th Chapter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&family=Noto+Sans+Sinhala:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans Sinhala', 'system-ui', 'sans-serif'],
+            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+          },
+          colors: {
+            obsidian: '#060608',
+            charcoal: '#0e0f14',
+            rosevelvet: '#e11d48',
+            champagne: '#f3d5b5',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #060608;
+      color: #f4f4f6;
+      overflow: hidden;
+      overscroll-behavior: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Subtle scrollbar for long wish card on smaller screens */
+    .wish-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .wish-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .wish-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 9999px;
+    }
+
+    /* Keyframe Animations */
+    @keyframes shakeHorizontal {
+      0%, 100% { transform: translateX(0); }
+      18% { transform: translateX(-8px) rotate(-0.8deg); }
+      36% { transform: translateX(8px) rotate(0.8deg); }
+      54% { transform: translateX(-6px) rotate(-0.5deg); }
+      72% { transform: translateX(6px) rotate(0.5deg); }
+      90% { transform: translateX(-3px); }
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes kenBurnsSlow {
+      0% {
+        transform: scale(1) translate3d(0, 0, 0);
+      }
+      100% {
+        transform: scale(1.08) translate3d(-1.5%, -1%, 0);
+      }
+    }
+
+    @keyframes flameFlicker {
+      0%, 100% {
+        transform: scaleX(1) scaleY(1) rotate(-1deg);
+        opacity: 0.96;
+      }
+      25% {
+        transform: scaleX(0.94) scaleY(1.05) rotate(1.5deg);
+        opacity: 1;
+      }
+      50% {
+        transform: scaleX(1.04) scaleY(0.96) rotate(-2deg);
+        opacity: 0.9;
+      }
+      75% {
+        transform: scaleX(0.97) scaleY(1.03) rotate(1deg);
+        opacity: 0.98;
+      }
+    }
+
+    @keyframes smokeRise {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.6);
+      }
+      25% {
+        opacity: 0.65;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-85px) translateX(14px) scale(2.1);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 0 24px rgba(244, 114, 182, 0.14), 0 0 56px rgba(225, 29, 72, 0.08);
+      }
+      50% {
+        box-shadow: 0 0 36px rgba(244, 114, 182, 0.28), 0 0 76px rgba(225, 29, 72, 0.16);
+      }
+    }
+
+    .animate-shake {
+      animation: shakeHorizontal 0.42s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+
+    .animate-fade-up {
+      animation: fadeSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .animate-ken-burns {
+      animation: kenBurnsSlow 8s ease-in-out infinite alternate;
+    }
+
+    .animate-flame {
+      transform-origin: bottom center;
+      animation: flameFlicker 0.65s ease-in-out infinite;
+    }
+
+    .animate-smoke {
+      animation: smokeRise 2.2s ease-out forwards;
+    }
+
+    .animate-pulse-glow {
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+
+    .glass-panel {
+      background: rgba(16, 17, 24, 0.72);
+      backdrop-filter: blur(22px) saturate(145%);
+      -webkit-backdrop-filter: blur(22px) saturate(145%);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+    }
+
+    .liquid-glass-wish {
+      background: linear-gradient(
+        155deg,
+        rgba(24, 25, 36, 0.76) 0%,
+        rgba(12, 13, 20, 0.84) 100%
+      );
+      backdrop-filter: blur(28px) saturate(160%);
+      -webkit-backdrop-filter: blur(28px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow:
+        0 24px 80px rgba(0, 0, 0, 0.75),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    }
+  </style>
+</head>
+<body class="bg-obsidian text-zinc-100 antialiased selection:bg-rose-500/30 selection:text-white">
+  <!-- Background music audio tag ("song.mp3") -->
+  <audio id="bgMusic" src="song.mp3" loop preload="auto"></audio>
+
+  <!-- Main Viewport Frame -->
+  <div id="app" class="relative w-full h-full flex items-center justify-center bg-[#040406] overflow-hidden">
+    <!-- Subtle ambient aura behind mobile stage on desktop -->
+    <div class="pointer-events-none hidden sm:block absolute w-[480px] h-[480px] rounded-full bg-rose-950/20 blur-[130px] -top-20 -left-10"></div>
+    <div class="pointer-events-none hidden sm:block absolute w-[420px] h-[420px] rounded-full bg-amber-900/10 blur-[130px] bottom-0 right-0"></div>
+
+    <!-- Mobile Story Container -->
+    <main id="stageFrame" class="relative w-full h-full sm:max-w-[430px] sm:h-[92vh] sm:max-h-[860px] sm:rounded-[34px] bg-obsidian sm:border sm:border-white/10 sm:shadow-[0_30px_100px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col">
+
+      <!-- Top Floating Controls: Audio Status & Preview Jump Drawer Trigger -->
+      <div class="absolute top-3.5 right-3.5 z-50 flex items-center gap-2">
+        <button
+          id="audioToggleBtn"
+          type="button"
+          title="Toggle Sound"
+          aria-label="Toggle Sound"
+          class="h-8 px-2.5 rounded-full bg-black/55 hover:bg-black/75 border border-white/15 backdrop-blur-md text-[11px] font-medium text-zinc-200 flex items-center gap-1.5 transition active:scale-95"
+        >
+          <span id="audioDot" class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span>
+          <span id="audioLabel">Muted</span>
+        </button>
+
+        <button
+          id="jumpDrawerBtn"
+          type="button"
+          title="Jump to Stage (Preview)"
+          aria-label="Jump to Stage"
+          class="h-8 px-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 backdrop-blur-md text-[11px] font-medium text-zinc-100 flex items-center gap-1 transition active:scale-95"
+        >
+          <span>Stages</span>
+          <svg class="w-3.5 h-3.5 opacity-80" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Preview Jump Drawer -->
+      <div id="jumpDrawer" class="hidden absolute inset-x-3 top-14 z-50 glass-panel rounded-2xl p-3.5 shadow-2xl animate-fade-up">
+        <div class="flex items-center justify-between pb-2 mb-2.5 border-b border-white/10">
+          <div>
+            <p class="text-xs font-semibold text-white tracking-wide">Preview Jump Menu</p>
+            <p class="text-[11px] text-zinc-400">Jump straight to any stage or photo set</p>
+          </div>
+          <button id="closeJumpDrawer" type="button" class="text-xs text-zinc-400 hover:text-white px-2 py-1 rounded-lg">
+            Close ✕
+          </button>
+        </div>
+        <div class="grid grid-cols-2 gap-1.5 max-h-[60vh] overflow-y-auto pr-0.5 text-xs">
+          <button data-jump="intro" class="jump-item text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-zinc-200 transition">1. Intro ("Ready for this")</button>
+          <button data-jump="quiz" class="jump-item text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-zinc-200 transition">2. Security Quiz (1/3)</button>
+          <button data-jump="fingerprint" class="jump-item text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-zinc-200 transition">3. Fingerprint Hold</button>
+          <button data-jump="cat" class="jump-item text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-zinc-200 transition">4. Cat Video (cat.mp4)</button>
+          <button data-jump="bridge" class="jump-item text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-zinc-200 transition">5. Mood-Shift Bridge</button>
+          <button data-jump="childhood" class="jump-item text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-zinc-200 transition">6. Childhood (1–4)</button>
+          <button data-jump="candle" class="jump-item text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-zinc-200 transition">7. Candle Blow (19th)</button>
+          <button data-jump="present-frock" class="jump-item text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-zinc-200 transition">8a. Black Frock (1–4)</button>
+          <button data-jump="present-guitar" class="jump-item text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-zinc-200 transition">8b. Guitar (1–12)</button>
+          <button data-jump="present-memo" class="jump-item text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-zinc-200 transition">8c. Memo (1–10)</button>
+          <button data-jump="wish" class="jump-item col-span-2 text-left px-3 py-2 rounded-xl bg-rose-500/15 hover:bg-rose-500/25 border border-rose-400/25 text-rose-100 font-medium transition">9. Final Wish Card (19th Birthday)</button>
+        </div>
+      </div>
+
+      <!-- ===================================================================
+           STAGE 1: INTRO SCREEN
+      ==================================================================== -->
+      <section id="stage-intro" class="stage relative w-full h-full flex flex-col items-center justify-center px-6 text-center bg-gradient-to-b from-[#09090d] via-[#060608] to-[#0b0709]">
+        <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(225,29,72,0.11),transparent_62%)]"></div>
+
+        <div class="relative z-10 flex flex-col items-center max-w-xs animate-fade-up">
+          <span class="text-[11px] uppercase tracking-[0.28em] text-zinc-500 mb-4">Chapter XIX</span>
+          <h1 class="font-serif italic text-3xl text-zinc-100/95 mb-2">A quiet little vault</h1>
+          <p class="text-xs text-zinc-400 mb-9 leading-relaxed">
+            Sound on recommended. Tap below when you’re ready to step in.
+          </p>
+
+          <button
+            id="readyForThisBtn"
+            type="button"
+            class="animate-pulse-glow group relative px-8 py-4 rounded-full bg-white text-obsidian font-medium text-sm tracking-wide shadow-xl hover:bg-zinc-100 active:scale-95 transition-all duration-200 flex items-center gap-2.5"
+          >
+            <span>Ready for this</span>
+            <span class="text-rose-600 group-hover:translate-x-0.5 transition-transform">→</span>
+          </button>
+
+          <p id="audioHint" class="mt-5 text-[11px] text-zinc-500 h-4"></p>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           STAGE 2: 3-QUESTION SECURITY QUIZ
+      ==================================================================== -->
+      <section id="stage-quiz" class="stage hidden relative w-full h-full flex flex-col justify-between px-5 pt-14 pb-7 bg-gradient-to-b from-[#0a0a0f] via-[#07070a] to-[#0c080b]">
+        <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(244,114,182,0.08),transparent_60%)]"></div>
+
+        <!-- Header & Progress -->
+        <div class="relative z-10">
+          <p class="text-center text-xs font-medium text-zinc-300 tracking-wide mb-3.5">
+            A little security check for the birthday girl 🕵️‍♀️✨
+          </p>
+
+          <div class="flex items-center justify-between text-[11px] text-zinc-400 mb-2 px-0.5">
+            <span id="quizCounterText" class="font-medium text-zinc-300">1 / 3</span>
+            <span class="text-zinc-500">Verification</span>
+          </div>
+
+          <!-- Progress Dots + Bar -->
+          <div class="flex items-center gap-2">
+            <div id="quizDots" class="flex-1 grid grid-cols-3 gap-2">
+              <span class="quiz-dot h-1.5 rounded-full bg-rose-400 transition-all duration-300"></span>
+              <span class="quiz-dot h-1.5 rounded-full bg-white/15 transition-all duration-300"></span>
+              <span class="quiz-dot h-1.5 rounded-full bg-white/15 transition-all duration-300"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz Card -->
+        <div id="quizCard" class="relative z-10 my-auto glass-panel rounded-3xl p-5 shadow-2xl transition-all duration-300">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] text-zinc-400 mb-3.5">
+            <span id="quizBadgeNumber">Question 01</span>
+          </div>
+
+          <h2 id="quizQuestionText" class="text-base sm:text-[17px] font-medium text-white leading-snug mb-5"></h2>
+
+          <div id="quizOptionsContainer" class="space-y-2.5"></div>
+
+          <!-- Roast / Wrong Answer Feedback Area -->
+          <div id="quizFeedbackBox" class="mt-4 min-h-[42px] flex items-center justify-center text-center px-3 py-2 rounded-2xl bg-rose-950/35 border border-rose-500/25 text-rose-200 text-xs font-medium opacity-0 transition-opacity duration-200">
+            <span id="quizFeedbackText"></span>
+          </div>
+        </div>
+
+        <div class="relative z-10 text-center text-[11px] text-zinc-500">
+          Choose carefully, chuti mnikh.
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           STAGE 3: FINGERPRINT / HEART-RING HOLD TO UNLOCK
+      ==================================================================== -->
+      <section id="stage-fingerprint" class="stage hidden relative w-full h-full flex flex-col items-center justify-between px-6 pt-16 pb-10 text-center bg-gradient-to-b from-[#08080c] via-[#060608] to-[#0d070a]">
+        <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(225,29,72,0.12),transparent_62%)]"></div>
+
+        <div class="relative z-10 max-w-xs animate-fade-up">
+          <span class="inline-block text-[11px] uppercase tracking-[0.22em] text-rose-300/80 mb-2.5">Biometric Vault</span>
+          <p class="text-sm sm:text-[15px] text-zinc-100 font-medium leading-relaxed">
+            All checks passed. Hold to unlock your 19th chapter 🖤✨
+          </p>
+        </div>
+
+        <!-- Hold Scanner Ring -->
+        <div class="relative z-10 flex flex-col items-center justify-center my-auto">
+          <div class="relative w-36 h-36 flex items-center justify-center">
+            <!-- SVG Progress Ring -->
+            <svg class="w-36 h-36 -rotate-90" viewBox="0 0 140 140">
+              <circle
+                cx="70"
+                cy="70"
+                r="60"
+                fill="none"
+                stroke="rgba(255,255,255,0.1)"
+                stroke-width="5"
+              />
+              <circle
+                id="holdProgressCircle"
+                cx="70"
+                cy="70"
+                r="60"
+                fill="none"
+                stroke="url(#unlockGradient)"
+                stroke-width="5.5"
+                stroke-linecap="round"
+                stroke-dasharray="376.99"
+                stroke-dashoffset="376.99"
+              />
+              <defs>
+                <linearGradient id="unlockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fb7185" />
+                  <stop offset="100%" stop-color="#f3d5b5" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            <!-- Tactile Center Button -->
+            <button
+              id="fingerprintHoldBtn"
+              type="button"
+              aria-label="Press and hold to unlock"
+              class="absolute w-28 h-28 rounded-full bg-white/[0.05] hover:bg-white/[0.08] border border-white/15 backdrop-blur-md flex flex-col items-center justify-center gap-1 transition-transform duration-150 active:scale-95"
+            >
+              <!-- Fingerprint SVG -->
+              <svg id="fingerprintIcon" class="w-11 h-11 text-zinc-200 transition-colors duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+                <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+                <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+                <path d="M2 12a10 10 0 0 1 18-6" />
+                <path d="M2 16h.01" />
+                <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+                <path d="M9 6.8a6 6 0 0 1 9 5.2c0 .47 0 1.17-.02 2" />
+                <path d="M8.6 21.6a15 15 0 0 1 .4-3.6" />
+                <path d="M5.72 19.74A9.96 9.96 0 0 0 7 15" />
+              </svg>
+              <span id="holdPercentText" class="text-[10px] font-medium tracking-wider text-zinc-400">HOLD</span>
+            </button>
+          </div>
+
+          <p id="fingerprintStatus" class="mt-6 h-6 text-xs font-medium text-zinc-400 tracking-wide transition-all">
+            Press &amp; hold firmly
+          </p>
+        </div>
+
+        <div class="relative z-10 text-[11px] text-zinc-500">
+          Keep holding until full circle completes
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           STAGE 4: KITTEN VIDEO INTERLUDE ("cat.mp4" + ANIMATED CANVAS/AUDIO FALLBACK)
+      ==================================================================== -->
+      <section id="stage-cat" class="stage hidden relative w-full h-full flex flex-col items-center justify-center bg-black overflow-hidden">
+        <video
+          id="catVideo"
+          src="cat.mp4"
+          playsinline
+          preload="metadata"
+          controls
+          class="w-full h-full object-cover z-10"
+        ></video>
+
+        <!-- Built-in Animated Kitten + Synthesized Meow/Chime Fallback when cat.mp4 fails to load -->
+        <div id="catFallbackCard" class="hidden absolute inset-0 z-10 flex flex-col items-center justify-between py-14 px-6 text-center bg-gradient-to-b from-[#171120] via-[#09090e] to-[#060608]">
+          <div class="mt-1">
+            <span class="inline-block px-3 py-1 rounded-full bg-rose-500/15 border border-rose-400/25 text-[10px] uppercase tracking-[0.22em] text-rose-200 mb-2">
+              Kitten Interlude · cat.mp4
+            </span>
+            <p class="font-serif italic text-2xl text-white">Birthday Kitty Dispatch 🐾</p>
+          </div>
+
+          <div class="relative w-64 h-64 rounded-3xl overflow-hidden border border-white/15 shadow-[0_20px_60px_rgba(0,0,0,0.75)] bg-[#0c0c13]">
+            <canvas id="catFallbackCanvas" class="w-full h-full block"></canvas>
+          </div>
+
+          <div class="flex flex-col items-center gap-2.5">
+            <p class="text-xs text-zinc-300">
+              Mew~ A tiny 19th birthday hello before the memories begin.
+            </p>
+            <button
+              id="catContinueFallbackBtn"
+              type="button"
+              class="px-5 py-2.5 rounded-full bg-white/15 hover:bg-white/25 border border-white/20 text-xs font-medium text-white transition active:scale-95"
+            >
+              Next / Continue →
+            </button>
+          </div>
+        </div>
+
+        <!-- Bottom Skip / Next Control -->
+        <div class="absolute bottom-14 inset-x-0 z-20 flex items-center justify-center px-6">
+          <button
+            id="skipCatBtn"
+            type="button"
+            class="px-5 py-2 rounded-full bg-black/65 hover:bg-black/85 border border-white/20 backdrop-blur-md text-xs font-medium text-white tracking-wide transition active:scale-95"
+          >
+            Skip / Next →
+          </button>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           STAGE 5: MOOD-SHIFT BRIDGE
+      ==================================================================== -->
+      <section id="stage-bridge" class="stage hidden relative w-full h-full flex flex-col items-center justify-center px-7 text-center bg-black">
+        <div class="max-w-xs space-y-5">
+          <p
+            id="bridgeLine1"
+            class="font-serif italic text-2xl sm:text-[26px] text-zinc-200 opacity-0 translate-y-3 transition-all duration-1000"
+          >
+            Okay, jokes aside...
+          </p>
+          <p
+            id="bridgeLine2"
+            class="text-sm sm:text-base text-zinc-300/95 font-light leading-relaxed opacity-0 translate-y-3 transition-all duration-1000"
+          >
+            Here are some childhood memories before nineteen. 🖤
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           STAGE 6 & 8: INSTAGRAM-STORY SLIDESHOW (CHILDHOOD & PRESENT)
+      ==================================================================== -->
+      <section id="stage-story" class="stage hidden relative w-full h-full flex flex-col justify-between bg-obsidian overflow-hidden">
+        <!-- Photo & Fallback Layer -->
+        <div class="absolute inset-0 z-0 overflow-hidden bg-[#07070a]">
+          <img
+            id="storyImage"
+            src=""
+            alt="Memory photo"
+            class="w-full h-full object-cover opacity-0 transition-opacity duration-500 animate-ken-burns"
+          />
+
+          <!-- Clean Canvas Visual Card when image file is not yet attached in preview -->
+          <div id="storyFallback" class="hidden absolute inset-0 flex flex-col items-center justify-center p-5 bg-[#07070c]">
+            <div class="relative w-full h-full max-h-[68vh] rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-[#0b0b12]">
+              <canvas id="storyFallbackCanvas" class="w-full h-full block"></canvas>
+              <div class="pointer-events-none absolute top-3.5 left-3.5 px-2.5 py-1 rounded-full bg-black/60 border border-white/15 backdrop-blur-md font-mono text-[10px] text-zinc-200">
+                <span id="storyFallbackFilename"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top & Bottom Gradients for Legibility -->
+          <div class="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/75 via-black/30 to-transparent"></div>
+          <div class="pointer-events-none absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-black/85 via-black/45 to-transparent"></div>
+        </div>
+
+        <!-- Story Progress Bars & Chapter Header -->
+        <div class="relative z-20 pt-3.5 px-3.5 pr-28">
+          <div id="storyProgressBars" class="flex items-center gap-1 w-full mb-2.5"></div>
+          <div class="flex items-center justify-between text-[11px]">
+            <div class="flex items-center gap-2">
+              <span id="storyChapterLabel" class="font-medium text-white/90 tracking-wide"></span>
+              <span id="storyPausedBadge" class="hidden px-2 py-0.5 rounded-full bg-black/60 border border-white/15 text-[10px] text-amber-200">
+                Paused
+              </span>
+            </div>
+            <span id="storyIndexLabel" class="text-zinc-300/80 font-mono text-[10px]"></span>
+          </div>
+        </div>
+
+        <!-- Tap Zones (Left = Prev, Right = Next, Hold = Pause) -->
+        <div id="storyTouchSurface" class="relative z-10 flex-1 w-full flex">
+          <div id="tapLeftZone" class="w-[32%] h-full"></div>
+          <div id="tapRightZone" class="w-[68%] h-full"></div>
+        </div>
+
+        <!-- Bottom Aesthetic Caption -->
+        <div class="relative z-20 px-5 pb-7 pt-2 pointer-events-none">
+          <p id="storyCaption" class="font-serif italic text-xl sm:text-2xl text-white leading-snug drop-shadow-md"></p>
+          <p class="mt-2 text-[10px] tracking-wider uppercase text-zinc-400/80">
+            Tap left / right · Hold to pause
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           STAGE 7: CANDLE-BLOW TURNING POINT
+      ==================================================================== -->
+      <section id="stage-candle" class="stage hidden relative w-full h-full flex flex-col items-center justify-between px-6 pt-16 pb-12 text-center bg-obsidian overflow-hidden">
+        <!-- Dimmed / Blurred Background from Last Childhood Photo -->
+        <div id="candleBgWrap" class="absolute inset-0 z-0 transition-all duration-1000">
+          <img
+            id="candleBgImg"
+            src="childhood 4.jpg"
+            alt=""
+            class="w-full h-full object-cover opacity-20 blur-xl scale-110"
+            onerror="this.style.display='none'"
+          />
+          <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(251,191,36,0.12),rgba(190,24,93,0.08)_45%,rgba(6,6,8,0.92)_85%)]"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-[#08070c]/85 to-black/95"></div>
+        </div>
+
+        <!-- Turning Point Bridge Text -->
+        <div class="relative z-10 max-w-xs mt-4 animate-fade-up">
+          <p class="font-serif italic text-2xl sm:text-[26px] text-champagne leading-snug">
+            And now… it’s time to step into nineteen. ✨
+          </p>
+        </div>
+
+        <!-- Interactive Candle -->
+        <div class="relative z-10 flex flex-col items-center justify-center my-auto">
+          <div id="candleSmokeContainer" class="relative w-20 h-24 flex items-end justify-center pointer-events-none -mb-2"></div>
+
+          <button
+            id="candleTapArea"
+            type="button"
+            aria-label="Make a wish and tap to blow the candle"
+            class="group relative flex flex-col items-center focus:outline-none active:scale-95 transition-transform"
+          >
+            <!-- Warm Ambient Halo Around Flame -->
+            <div
+              id="candleHalo"
+              class="w-24 h-24 rounded-full bg-amber-400/20 blur-2xl -mb-14 transition-opacity duration-700"
+            ></div>
+
+            <!-- Flame -->
+            <div id="candleFlame" class="relative z-10 mb-1 transition-all duration-500">
+              <div class="w-4 h-7 rounded-full bg-gradient-to-t from-amber-500 via-yellow-300 to-white shadow-[0_0_20px_rgba(251,191,36,0.95)] animate-flame"></div>
+            </div>
+
+            <!-- Candle Wax Body -->
+            <div class="relative w-7 h-28 rounded-t-lg rounded-b-md bg-gradient-to-r from-rose-200 via-rose-100 to-rose-300 shadow-[0_10px_30px_rgba(0,0,0,0.6)] flex flex-col items-center justify-start overflow-hidden">
+              <div class="w-1.5 h-6 bg-white/80 rounded-b-full ml-1.5"></div>
+              <span class="mt-auto mb-3 text-[10px] font-semibold tracking-tighter text-rose-950/60">19</span>
+            </div>
+
+            <!-- Candle Base -->
+            <div class="w-14 h-2.5 rounded-full bg-gradient-to-r from-zinc-700 via-zinc-400 to-zinc-700 -mt-0.5 shadow-lg"></div>
+          </button>
+
+          <p id="candlePromptText" class="mt-7 text-xs sm:text-sm font-medium text-zinc-200 tracking-wide">
+            Make a wish &amp; tap to blow the candle 🕯️
+          </p>
+        </div>
+
+        <div class="relative z-10 text-[11px] text-zinc-500 h-4"></div>
+      </section>
+
+      <!-- ===================================================================
+           STAGE 8 (FINAL): WISH CARD OVER "wish background.jpg"
+      ==================================================================== -->
+      <section id="stage-wish" class="stage hidden relative w-full h-full flex flex-col justify-between p-4 sm:p-5 pt-14 bg-obsidian overflow-hidden">
+        <!-- Wish Background Image + Canvas Fallback + Dark Scrim -->
+        <div class="absolute inset-0 z-0">
+          <img
+            id="wishBgImg"
+            src="wish background.jpg"
+            alt="Wish background"
+            class="w-full h-full object-cover opacity-55 scale-105"
+          />
+          <canvas id="wishFallbackCanvas" class="hidden w-full h-full block"></canvas>
+          <div class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/55 to-black/85"></div>
+        </div>
+
+        <!-- Liquid-Glass Wish Card -->
+        <div class="relative z-10 my-auto liquid-glass-wish rounded-3xl p-5 sm:p-6 max-h-[76vh] flex flex-col animate-fade-up">
+          <div class="flex items-center justify-between mb-3 shrink-0">
+            <span class="text-[10px] uppercase tracking-[0.24em] text-rose-300/85 font-medium">
+              For My Chuti Mnikh
+            </span>
+            <span class="text-xs text-zinc-400">🖤 19</span>
+          </div>
+
+          <h2 class="font-serif italic text-2xl sm:text-[26px] text-white leading-snug mb-3.5 shrink-0">
+            Happy 19th Birthday, mge chuti mnikh.
+          </h2>
+
+          <div class="wish-scroll overflow-y-auto pr-1.5 space-y-3.5 text-[13px] sm:text-[13.5px] text-zinc-200/95 leading-relaxed font-normal">
+            <p>
+              Looking back at those little childhood moments and seeing you step into nineteen now — it still amazes me how lucky I am to have you in my life. Every smile, every memory, and every frame of who you are means more to me than words could ever hold.
+            </p>
+            <p>
+              You’re still my chuti mnikh, still my little angel, and nothing about how deeply I care for you will ever change. Watching you grow into the kind, radiant person you are today is my favorite thing in the world.
+            </p>
+            <p>
+              I want to hear how nineteen feels to you, and I’m always right here beside you for every chapter of your story. More than anything, I wish you endless happiness, gentle days, and every little dream you hold onto coming true.
+            </p>
+            <p class="font-medium text-champagne pt-0.5">
+              Happy nineteen, mge chuti mnikh.
+            </p>
+          </div>
+        </div>
+
+        <!-- Replay Button -->
+        <div class="relative z-10 pt-3 flex items-center justify-center shrink-0">
+          <button
+            id="replayExperienceBtn"
+            type="button"
+            class="px-6 py-2.5 rounded-full bg-white/12 hover:bg-white/20 border border-white/20 backdrop-blur-md text-xs font-medium text-white tracking-wide transition active:scale-95 flex items-center gap-2"
+          >
+            <span>↺</span>
+            <span>Replay</span>
+          </button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    /**
+     * 19th Birthday Interactive Story Controller
+     * Coordinates all 8 stages, exact quiz flow + roasts, fingerprint hold ring,
+     * kitten interlude (cat.mp4 + canvas/meow fallback), mood-shift bridge,
+     * story slideshows (4 childhood + 27 present photos + canvas fallbacks),
+     * candle-blow animation, background music (song.mp3 + Web Audio piano/pad fallback),
+     * and final wish card over wish background.jpg (with canvas backdrop fallback).
+     */
+    (function () {
+      // =====================================================================
+      // QUIZ DATA (EXACT QUESTIONS, OPTIONS & ROASTS)
+      // =====================================================================
+      const QUIZ_QUESTIONS = [
+        {
+          badge: 'Question 01',
+          question: 'Quick pop quiz before the goods 👀 – when was our very first kiss?',
+          options: [
+            {
+              label: 'January 17, 2025 💋',
+              correct: true
+            },
+            {
+              label: 'February 14, 2025 (too cliché 🙄)',
+              correct: false,
+              roast: 'Nice try, birthday girl 🙄'
+            },
+            {
+              label: 'December 28, 2024 (making things up now? 🤔)',
+              correct: false,
+              roast: 'Nope, try again 👀'
+            }
+          ]
+        },
+        {
+          badge: 'Question 02',
+          question: 'When did we actually get dangerously close for the first time? 😏',
+          options: [
+            {
+              label: 'Watching our first movie together 🎬🍿',
+              correct: true
+            },
+            {
+              label: 'First day out (trying to act innocent 😇)',
+              correct: false,
+              roast: 'Nice try, birthday girl 🙄'
+            },
+            {
+              label: 'In the classroom (pretending to study 📚😂)',
+              correct: false,
+              roast: 'Nope, try again 👀'
+            }
+          ]
+        },
+        {
+          badge: 'Question 03',
+          question: 'Last test before the vault opens 🔓 – what’s actually waiting inside?',
+          options: [
+            {
+              label: '19 years of you + a piece of my heart 🖤✨',
+              correct: true
+            },
+            {
+              label: 'A blank screen (classic prank 💀)',
+              correct: false,
+              roast: 'Nice try, birthday girl 🙄'
+            },
+            {
+              label: 'Combined Maths past papers 😭',
+              correct: false,
+              roast: 'A/L exam mode activated 📚💀'
+            }
+          ]
+        }
+      ];
+
+      // =====================================================================
+      // MEDIA COLLECTIONS (4 CHILDHOOD + 27 PRESENT PHOTOS)
+      // =====================================================================
+      const CHILDHOOD_SLIDES = [
+        { src: 'childhood 1.jpg', caption: 'Where the quietest magic began.' },
+        { src: 'childhood 2.jpg', caption: 'Little steps toward a bright soul.' },
+        { src: 'childhood 3.jpg', caption: 'Soft laughter frozen in time.' },
+        { src: 'childhood 4.jpg', caption: 'Every little piece of who you grew to be.' }
+      ];
+
+      const PRESENT_SLIDES = [
+        // Black frock 1–4
+        { src: 'black frock 1.jpg', group: 'Black Frock', caption: 'Effortless grace in every shadow.' },
+        { src: 'black frock 2.jpg', group: 'Black Frock', caption: 'Quiet poise that turns every head.' },
+        { src: 'black frock 3.jpg', group: 'Black Frock', caption: 'Midnight elegance, unmistakable you.' },
+        { src: 'black frock 4.jpg', group: 'Black Frock', caption: 'Still stealing the frame without trying.' },
+
+        // Guitar 1–12
+        { src: 'guitar 1.jpg', group: 'Guitar', caption: 'Strings humming a softer rhythm.' },
+        { src: 'guitar 2.jpg', group: 'Guitar', caption: 'Melodies that linger long after.' },
+        { src: 'guitar 3.jpg', group: 'Guitar', caption: 'Warm notes in a quiet room.' },
+        { src: 'guitar 4.jpg', group: 'Guitar', caption: 'Every chord feels like a memory.' },
+        { src: 'guitar 5.jpg', group: 'Guitar', caption: 'Golden light and gentle acoustics.' },
+        { src: 'guitar 6.jpg', group: 'Guitar', caption: 'A song only your presence writes.' },
+        { src: 'guitar 7.jpg', group: 'Guitar', caption: 'Fingertips tracing slow devotion.' },
+        { src: 'guitar 8.jpg', group: 'Guitar', caption: 'Stillness tuned to your favorite sound.' },
+        { src: 'guitar 9.jpg', group: 'Guitar', caption: 'Echoes of late-evening calm.' },
+        { src: 'guitar 10.jpg', group: 'Guitar', caption: 'Every verse closer to nineteen.' },
+        { src: 'guitar 11.jpg', group: 'Guitar', caption: 'Soft resonance, steady heart.' },
+        { src: 'guitar 12.jpg', group: 'Guitar', caption: 'The final note before a new chapter.' },
+
+        // Memo 1–10
+        { src: 'memo 1.jpg', group: 'Memo', caption: 'A note kept close to my chest.' },
+        { src: 'memo 2.jpg', group: 'Memo', caption: 'Small moments, heavy meaning.' },
+        { src: 'memo 3.jpg', group: 'Memo', caption: 'Written in the margins of my days.' },
+        { src: 'memo 4.jpg', group: 'Memo', caption: 'Every glance worth remembering.' },
+        { src: 'memo 5.jpg', group: 'Memo', caption: 'Timeless little reminders of us.' },
+        { src: 'memo 6.jpg', group: 'Memo', caption: 'Gentleness in every detail.' },
+        { src: 'memo 7.jpg', group: 'Memo', caption: 'The way you light up ordinary hours.' },
+        { src: 'memo 8.jpg', group: 'Memo', caption: 'Kept safe inside the vault.' },
+        { src: 'memo 9.jpg', group: 'Memo', caption: 'Leading right up to nineteen.' },
+        { src: 'memo 10.jpg', group: 'Memo', caption: 'Always my chuti mnikh.' }
+      ];
+
+      // =====================================================================
+      // DOM REFERENCES & APPLICATION STATE
+      // =====================================================================
+      const stages = {
+        intro: document.getElementById('stage-intro'),
+        quiz: document.getElementById('stage-quiz'),
+        fingerprint: document.getElementById('stage-fingerprint'),
+        cat: document.getElementById('stage-cat'),
+        bridge: document.getElementById('stage-bridge'),
+        story: document.getElementById('stage-story'),
+        candle: document.getElementById('stage-candle'),
+        wish: document.getElementById('stage-wish')
+      };
+
+      const bgMusic = document.getElementById('bgMusic');
+      const audioToggleBtn = document.getElementById('audioToggleBtn');
+      const audioDot = document.getElementById('audioDot');
+      const audioLabel = document.getElementById('audioLabel');
+      const audioHint = document.getElementById('audioHint');
+
+      const jumpDrawerBtn = document.getElementById('jumpDrawerBtn');
+      const jumpDrawer = document.getElementById('jumpDrawer');
+      const closeJumpDrawer = document.getElementById('closeJumpDrawer');
+
+      const state = {
+        currentStage: 'intro',
+        musicEnabled: false,
+        pausedForCat: false,
+        quizIndex: 0,
+        holdStartTime: null,
+        holdRaf: null,
+        holdDuration: 2000, // 2 seconds hold to unlock
+        storyMode: 'childhood', // 'childhood' | 'present'
+        storySlides: CHILDHOOD_SLIDES,
+        storyIndex: 0,
+        storyDuration: 4200,
+        storyElapsed: 0,
+        storyTimer: null,
+        storyPaused: false,
+        candleBlown: false,
+        bridgeTimers: []
+      };
+
+      // =====================================================================
+      // AUDIO ENGINE (song.mp3 + WEB AUDIO API PIANO/PAD & MEOW FALLBACK)
+      // =====================================================================
+      let fadeInterval = null;
+      let synthCtx = null;
+      let synthMasterGain = null;
+      let synthTimer = null;
+      let synthActive = false;
+      let usingFallbackSynth = false;
+
+      const CHORD_PROGRESSION = [
+        [220.0, 261.63, 329.63, 392.0],  // Am7
+        [174.61, 220.0, 261.63, 329.63], // Fmaj7
+        [130.81, 196.0, 246.94, 329.63], // Cmaj7
+        [196.0, 246.94, 293.66, 392.0]   // G6
+      ];
+      let chordStep = 0;
+
+      function ensureSynthContext() {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) return null;
+        if (!synthCtx) {
+          synthCtx = new AudioContextClass();
+          synthMasterGain = synthCtx.createGain();
+          synthMasterGain.gain.setValueAtTime(0.0001, synthCtx.currentTime);
+          synthMasterGain.connect(synthCtx.destination);
+        }
+        if (synthCtx.state === 'suspended') {
+          synthCtx.resume().catch(() => {});
+        }
+        return synthCtx;
+      }
+
+      function playSynthChordTick() {
+        if (!synthCtx || !synthMasterGain || !synthActive) return;
+        const now = synthCtx.currentTime;
+        const notes = CHORD_PROGRESSION[chordStep % CHORD_PROGRESSION.length];
+        chordStep++;
+
+        notes.forEach((freq, idx) => {
+          const osc = synthCtx.createOscillator();
+          const noteGain = synthCtx.createGain();
+
+          osc.type = idx === 0 ? 'sine' : 'triangle';
+          const startAt = now + idx * 0.24;
+          const duration = 3.2;
+
+          osc.frequency.setValueAtTime(freq, startAt);
+          noteGain.gain.setValueAtTime(0.0001, startAt);
+          noteGain.gain.exponentialRampToValueAtTime(idx === 0 ? 0.055 : 0.028, startAt + 0.45);
+          noteGain.gain.exponentialRampToValueAtTime(0.0001, startAt + duration);
+
+          osc.connect(noteGain);
+          noteGain.connect(synthMasterGain);
+
+          osc.start(startAt);
+          osc.stop(startAt + duration + 0.05);
+        });
+      }
+
+      function startFallbackSynth(targetVol = 0.75, durationMs = 1200) {
+        const ctx = ensureSynthContext();
+        if (!ctx) return;
+
+        usingFallbackSynth = true;
+        synthActive = true;
+        clearInterval(synthTimer);
+        playSynthChordTick();
+        synthTimer = setInterval(playSynthChordTick, 2800);
+
+        const now = ctx.currentTime;
+        const mappedGain = Math.max(0.0001, Math.min(0.45, targetVol * 0.35));
+        synthMasterGain.gain.cancelScheduledValues(now);
+        synthMasterGain.gain.setValueAtTime(Math.max(0.0001, synthMasterGain.gain.value || 0.0001), now);
+        synthMasterGain.gain.linearRampToValueAtTime(mappedGain, now + Math.max(0.15, durationMs / 1000));
+        updateAudioIndicator();
+      }
+
+      function stopFallbackSynth(smooth = true) {
+        synthActive = false;
+        clearInterval(synthTimer);
+        if (synthCtx && synthMasterGain) {
+          const now = synthCtx.currentTime;
+          synthMasterGain.gain.cancelScheduledValues(now);
+          synthMasterGain.gain.setValueAtTime(Math.max(0.0001, synthMasterGain.gain.value || 0.0001), now);
+          synthMasterGain.gain.exponentialRampToValueAtTime(0.0001, now + (smooth ? 0.35 : 0.04));
+        }
+        updateAudioIndicator();
+      }
+
+      // Playful synthesized kitten meow & chime for cat fallback
+      function playSynthesizedMeow() {
+        const ctx = ensureSynthContext();
+        if (!ctx) return;
+
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const filter = ctx.createBiquadFilter();
+        const gain = ctx.createGain();
+
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(520, now);
+        osc.frequency.exponentialRampToValueAtTime(760, now + 0.14);
+        osc.frequency.exponentialRampToValueAtTime(410, now + 0.48);
+
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(1150, now);
+        filter.Q.setValueAtTime(2.6, now);
+
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.linearRampToValueAtTime(0.08, now + 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.5);
+
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.52);
+      }
+
+      function updateAudioIndicator() {
+        const mp3Playing = !bgMusic.paused && !bgMusic.error && bgMusic.volume > 0.01;
+        const synthPlaying = usingFallbackSynth && synthActive;
+
+        if (mp3Playing || synthPlaying) {
+          audioDot.className = 'w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse';
+          audioLabel.textContent = synthPlaying ? 'Ambient On' : 'Song On';
+        } else {
+          audioDot.className = 'w-1.5 h-1.5 rounded-full bg-zinc-500';
+          audioLabel.textContent = state.musicEnabled ? 'Paused' : 'Muted';
+        }
+      }
+
+      function fadeMusicTo(targetVolume = 0.75, durationMs = 1200) {
+        if (!state.musicEnabled) return;
+        clearInterval(fadeInterval);
+
+        if (bgMusic.error || usingFallbackSynth) {
+          startFallbackSynth(targetVolume, durationMs);
+          return;
+        }
+
+        bgMusic.play().then(() => {
+          usingFallbackSynth = false;
+          stopFallbackSynth(false);
+
+          const startVol = bgMusic.volume || 0;
+          const steps = 24;
+          const stepTime = Math.max(20, Math.floor(durationMs / steps));
+          let currentStep = 0;
+
+          fadeInterval = setInterval(() => {
+            currentStep++;
+            const progress = Math.min(1, currentStep / steps);
+            bgMusic.volume = Math.max(0, Math.min(1, startVol + (targetVolume - startVol) * progress));
+            updateAudioIndicator();
+            if (progress >= 1) {
+              clearInterval(fadeInterval);
+            }
+          }, stepTime);
+        }).catch((err) => {
+          if (bgMusic.error) {
+            audioHint.textContent = 'Ambient piano/pad fallback active (song.mp3 failed to load)';
+            startFallbackSynth(targetVolume, durationMs);
+          } else {
+            updateAudioIndicator();
+          }
+        });
+      }
+
+      function pauseMusicForCat() {
+        clearInterval(fadeInterval);
+        state.pausedForCat = true;
+        if (!bgMusic.paused) {
+          bgMusic.pause();
+        }
+        if (synthActive) {
+          stopFallbackSynth(true);
+        }
+        updateAudioIndicator();
+      }
+
+      function resumeMusicAfterCat(fadeDuration = 1400) {
+        state.pausedForCat = false;
+        if (state.musicEnabled) {
+          if (usingFallbackSynth || bgMusic.error) {
+            startFallbackSynth(0.75, fadeDuration);
+          } else {
+            bgMusic.volume = 0.02;
+            fadeMusicTo(0.75, fadeDuration);
+          }
+        } else {
+          updateAudioIndicator();
+        }
+      }
+
+      audioToggleBtn.addEventListener('click', () => {
+        if (!state.musicEnabled) {
+          state.musicEnabled = true;
+          if (usingFallbackSynth || bgMusic.error) {
+            startFallbackSynth(0.75, 700);
+          } else {
+            bgMusic.volume = 0.05;
+            fadeMusicTo(0.75, 700);
+          }
+        } else {
+          const isCurrentlyPlaying = (!bgMusic.paused && !bgMusic.error) || (usingFallbackSynth && synthActive);
+          if (isCurrentlyPlaying) {
+            state.musicEnabled = false;
+            bgMusic.pause();
+            stopFallbackSynth(true);
+          } else {
+            if (usingFallbackSynth || bgMusic.error) {
+              startFallbackSynth(0.75, 600);
+            } else {
+              bgMusic.volume = 0.05;
+              fadeMusicTo(0.75, 600);
+            }
+          }
+        }
+      });
+
+      bgMusic.addEventListener('error', () => {
+        if (state.musicEnabled && !state.pausedForCat && state.currentStage !== 'cat') {
+          startFallbackSynth(0.75, 900);
+        } else {
+          updateAudioIndicator();
+        }
+      });
+
+      // =====================================================================
+      // CANVAS VISUAL FALLBACKS (KITTEN VIDEO, PHOTO SLIDES & WISH BACKDROP)
+      // =====================================================================
+      let catCanvasRaf = null;
+      let lastMeowTime = 0;
+
+      function startCatCanvasFallback() {
+        const canvas = document.getElementById('catFallbackCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (catCanvasRaf) cancelAnimationFrame(catCanvasRaf);
+
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = 256 * dpr;
+        canvas.height = 256 * dpr;
+
+        const sparkles = Array.from({ length: 16 }, (_, i) => ({
+          angle: (i / 16) * Math.PI * 2,
+          radius: 68 + (i % 3) * 18,
+          speed: 0.012 + (i % 4) * 0.004,
+          size: 2 + (i % 3)
+        }));
+
+        function renderCat(t) {
+          if (state.currentStage !== 'cat' || catFallbackCard.classList.contains('hidden')) {
+            catCanvasRaf = null;
+            return;
+          }
+
+          if (state.musicEnabled && t - lastMeowTime > 2600) {
+            lastMeowTime = t;
+            playSynthesizedMeow();
+          }
+
+          ctx.save();
+          ctx.scale(dpr, dpr);
+          ctx.clearRect(0, 0, 256, 256);
+
+          const grad = ctx.createRadialGradient(128, 118, 12, 128, 128, 135);
+          grad.addColorStop(0, '#2a1829');
+          grad.addColorStop(0.65, '#12101d');
+          grad.addColorStop(1, '#08080e');
+          ctx.fillStyle = grad;
+          ctx.fillRect(0, 0, 256, 256);
+
+          sparkles.forEach((sp) => {
+            sp.angle += sp.speed;
+            const sx = 128 + Math.cos(sp.angle + t * 0.001) * sp.radius;
+            const sy = 126 + Math.sin(sp.angle * 1.2) * (sp.radius * 0.72);
+            const alpha = 0.35 + 0.65 * Math.abs(Math.sin(t * 0.003 + sp.angle));
+            ctx.fillStyle = `rgba(253, 224, 171, ${alpha.toFixed(2)})`;
+            ctx.beginPath();
+            ctx.arc(sx, sy, sp.size, 0, Math.PI * 2);
+            ctx.fill();
+          });
+
+          const bounce = Math.sin(t * 0.0055) * 7;
+          const tilt = Math.sin(t * 0.0032) * 0.05;
+          ctx.translate(128, 144 + bounce);
+          ctx.rotate(tilt);
+
+          // Tail wagging
+          const tailSwing = Math.sin(t * 0.007) * 0.35;
+          ctx.save();
+          ctx.translate(36, 24);
+          ctx.rotate(tailSwing);
+          ctx.strokeStyle = '#f4c2c2';
+          ctx.lineWidth = 8;
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.quadraticCurveTo(28, -10, 24, -36);
+          ctx.stroke();
+          ctx.restore();
+
+          // Body
+          ctx.fillStyle = '#f8d7da';
+          ctx.beginPath();
+          ctx.ellipse(0, 24, 34, 30, 0, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Ears
+          ctx.fillStyle = '#f8d7da';
+          ctx.beginPath();
+          ctx.moveTo(-30, -18);
+          ctx.lineTo(-38, -50);
+          ctx.lineTo(-8, -32);
+          ctx.closePath();
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.moveTo(30, -18);
+          ctx.lineTo(38, -50);
+          ctx.lineTo(8, -32);
+          ctx.closePath();
+          ctx.fill();
+
+          // Inner pink ears
+          ctx.fillStyle = '#fb7185';
+          ctx.beginPath();
+          ctx.moveTo(-26, -22);
+          ctx.lineTo(-32, -42);
+          ctx.lineTo(-13, -30);
+          ctx.closePath();
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.moveTo(26, -22);
+          ctx.lineTo(32, -42);
+          ctx.lineTo(13, -30);
+          ctx.closePath();
+          ctx.fill();
+
+          // Head
+          ctx.fillStyle = '#fae1dd';
+          ctx.beginPath();
+          ctx.ellipse(0, -10, 40, 34, 0, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Eyes
+          const isBlinking = Math.sin(t * 0.0022) > 0.96;
+          ctx.strokeStyle = '#1e1b2e';
+          ctx.fillStyle = '#1e1b2e';
+          ctx.lineWidth = 2.6;
+          ctx.lineCap = 'round';
+
+          if (isBlinking) {
+            ctx.beginPath();
+            ctx.moveTo(-21, -12);
+            ctx.lineTo(-10, -12);
+            ctx.moveTo(10, -12);
+            ctx.lineTo(21, -12);
+            ctx.stroke();
+          } else {
+            ctx.beginPath();
+            ctx.arc(-15, -12, 4.5, 0, Math.PI * 2);
+            ctx.arc(15, -12, 4.5, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.arc(-16.5, -13.8, 1.6, 0, Math.PI * 2);
+            ctx.arc(13.5, -13.8, 1.6, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // Cheeks & mouth
+          ctx.fillStyle = 'rgba(251, 113, 133, 0.35)';
+          ctx.beginPath();
+          ctx.arc(-23, -3, 5.5, 0, Math.PI * 2);
+          ctx.arc(23, -3, 5.5, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = '#f43f5e';
+          ctx.beginPath();
+          ctx.arc(0, -4, 3, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.strokeStyle = '#3f2e3e';
+          ctx.lineWidth = 1.8;
+          ctx.beginPath();
+          ctx.arc(-4.5, -1, 4.5, 0.1 * Math.PI, 0.9 * Math.PI);
+          ctx.arc(4.5, -1, 4.5, 0.1 * Math.PI, 0.9 * Math.PI);
+          ctx.stroke();
+
+          // Whiskers
+          ctx.strokeStyle = 'rgba(63, 46, 62, 0.55)';
+          ctx.lineWidth = 1.4;
+          ctx.beginPath();
+          ctx.moveTo(-22, -6); ctx.lineTo(-42, -9);
+          ctx.moveTo(-22, 0);  ctx.lineTo(-42, 2);
+          ctx.moveTo(22, -6);  ctx.lineTo(42, -9);
+          ctx.moveTo(22, 0);   ctx.lineTo(42, 2);
+          ctx.stroke();
+
+          // "19" badge
+          ctx.fillStyle = '#9f1239';
+          ctx.font = 'bold 11px Inter, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('19', 0, 29);
+
+          ctx.restore();
+          catCanvasRaf = requestAnimationFrame(renderCat);
+        }
+
+        catCanvasRaf = requestAnimationFrame(renderCat);
+      }
+
+      function renderSlideFallbackArtwork(slide, mode, index) {
+        const canvas = document.getElementById('storyFallbackCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        const w = 400;
+        const h = 620;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+
+        ctx.save();
+        ctx.scale(dpr, dpr);
+
+        let palette = ['#171321', '#0c0c14', '#f472b6'];
+        let motif = 'film';
+
+        if (mode === 'childhood') {
+          palette = ['#2a1d19', '#140f12', '#f3d5b5'];
+          motif = 'childhood';
+        } else if (slide.group === 'Black Frock') {
+          palette = ['#191118', '#07070b', '#fb7185'];
+          motif = 'frock';
+        } else if (slide.group === 'Guitar') {
+          palette = ['#241710', '#0b090c', '#fbbf24'];
+          motif = 'guitar';
+        } else if (slide.group === 'Memo') {
+          palette = ['#131b26', '#080b12', '#93c5fd'];
+          motif = 'memo';
+        }
+
+        const bgGrad = ctx.createLinearGradient(0, 0, w, h);
+        bgGrad.addColorStop(0, palette[0]);
+        bgGrad.addColorStop(0.55, palette[1]);
+        bgGrad.addColorStop(1, '#050508');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, w, h);
+
+        const orb = ctx.createRadialGradient(w * 0.5, h * 0.38, 15, w * 0.5, h * 0.38, 180);
+        orb.addColorStop(0, `${palette[2]}33`);
+        orb.addColorStop(1, 'transparent');
+        ctx.fillStyle = orb;
+        ctx.fillRect(0, 0, w, h);
+
+        for (let i = 0; i < 90; i++) {
+          const gx = (i * 73 + index * 37) % w;
+          const gy = (i * 139 + index * 53) % h;
+          ctx.fillStyle = 'rgba(255,255,255,0.04)';
+          ctx.fillRect(gx, gy, 2, 2);
+        }
+
+        ctx.save();
+        ctx.translate(w / 2, h * 0.4);
+
+        if (motif === 'childhood') {
+          ctx.strokeStyle = 'rgba(243, 213, 181, 0.35)';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(-86, -104, 172, 208);
+
+          ctx.fillStyle = 'rgba(243, 213, 181, 0.12)';
+          ctx.beginPath();
+          ctx.arc(0, -14, 46, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = '#f3d5b5';
+          ctx.font = 'italic 28px "Cormorant Garamond", Georgia, serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('Little You', 0, -6);
+        } else if (motif === 'frock') {
+          ctx.strokeStyle = 'rgba(251, 113, 133, 0.45)';
+          ctx.lineWidth = 1.8;
+          ctx.beginPath();
+          ctx.arc(0, -25, 78, Math.PI, 0);
+          ctx.lineTo(78, 95);
+          ctx.lineTo(-78, 95);
+          ctx.closePath();
+          ctx.stroke();
+
+          ctx.fillStyle = 'rgba(251, 113, 133, 0.14)';
+          ctx.beginPath();
+          ctx.ellipse(0, 12, 34, 62, 0, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (motif === 'guitar') {
+          ctx.strokeStyle = 'rgba(251, 191, 36, 0.45)';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(0, -24, 34, 0, Math.PI * 2);
+          ctx.arc(0, 30, 52, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.fillStyle = 'rgba(251, 191, 36, 0.25)';
+          ctx.beginPath();
+          ctx.arc(0, 14, 16, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          ctx.strokeStyle = 'rgba(147, 197, 253, 0.35)';
+          ctx.lineWidth = 1.8;
+          ctx.strokeRect(-92, -96, 184, 192);
+          ctx.strokeRect(-76, -80, 152, 132);
+        }
+
+        ctx.restore();
+
+        ctx.fillStyle = 'rgba(255,255,255,0.88)';
+        ctx.font = 'italic 21px "Cormorant Garamond", Georgia, serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(slide.caption, w / 2, h * 0.72, w - 48);
+
+        ctx.restore();
+      }
+
+      function renderWishFallbackBackdrop() {
+        const canvas = document.getElementById('wishFallbackCanvas');
+        const img = document.getElementById('wishBgImg');
+        if (!canvas || !img) return;
+
+        if (img.complete && img.naturalWidth > 0) {
+          canvas.classList.add('hidden');
+          img.classList.remove('hidden');
+          return;
+        }
+
+        if (!img.complete && !img.error) {
+          canvas.classList.add('hidden');
+          img.classList.remove('hidden');
+          return;
+        }
+
+        img.classList.add('hidden');
+        canvas.classList.remove('hidden');
+
+        const ctx = canvas.getContext('2d');
+        const w = 430;
+        const h = 820;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+
+        ctx.save();
+        ctx.scale(dpr, dpr);
+
+        const grad = ctx.createLinearGradient(0, 0, w, h);
+        grad.addColorStop(0, '#180d19');
+        grad.addColorStop(0.5, '#090911');
+        grad.addColorStop(1, '#120b14');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+
+        const orbs = [
+          { x: 95, y: 180, r: 120, c: 'rgba(225, 29, 72, 0.16)' },
+          { x: 330, y: 310, r: 145, c: 'rgba(243, 213, 181, 0.11)' },
+          { x: 180, y: 640, r: 160, c: 'rgba(131, 24, 67, 0.18)' }
+        ];
+
+        orbs.forEach((o) => {
+          const rg = ctx.createRadialGradient(o.x, o.y, 10, o.x, o.y, o.r);
+          rg.addColorStop(0, o.c);
+          rg.addColorStop(1, 'transparent');
+          ctx.fillStyle = rg;
+          ctx.fillRect(0, 0, w, h);
+        });
+
+        ctx.restore();
+      }
+
+      document.getElementById('wishBgImg').addEventListener('error', () => {
+        renderWishFallbackBackdrop();
+      });
+
+      document.getElementById('wishBgImg').addEventListener('load', () => {
+        document.getElementById('wishFallbackCanvas').classList.add('hidden');
+        document.getElementById('wishBgImg').classList.remove('hidden');
+      });
+
+      // =====================================================================
+      // STAGE NAVIGATION & CLEANUP
+      // =====================================================================
+      function clearAllTimers() {
+        clearStoryTimer();
+        cancelFingerprintHold();
+        state.bridgeTimers.forEach((t) => clearTimeout(t));
+        state.bridgeTimers = [];
+      }
+
+      function showStage(stageKey) {
+        clearAllTimers();
+        state.currentStage = stageKey;
+
+        Object.entries(stages).forEach(([key, el]) => {
+          if (key === stageKey) {
+            el.classList.remove('hidden');
+            el.classList.add('animate-fade-up');
+          } else {
+            el.classList.add('hidden');
+            el.classList.remove('animate-fade-up');
+          }
+        });
+
+        if (stageKey === 'wish') {
+          renderWishFallbackBackdrop();
+        }
+
+        const catVideo = document.getElementById('catVideo');
+        if (stageKey !== 'cat' && !catVideo.paused) {
+          catVideo.pause();
+        }
+
+        if (stageKey !== 'cat' && state.pausedForCat && state.musicEnabled) {
+          resumeMusicAfterCat(1200);
+        }
+      }
+
+      // =====================================================================
+      // STAGE 1: INTRO ("Ready for this")
+      // =====================================================================
+      document.getElementById('readyForThisBtn').addEventListener('click', () => {
+        state.musicEnabled = true;
+        bgMusic.volume = 0.02;
+        fadeMusicTo(0.75, 1300);
+
+        state.quizIndex = 0;
+        renderQuizQuestion();
+        showStage('quiz');
+      });
+
+      // =====================================================================
+      // STAGE 2: 3-QUESTION SECURITY QUIZ
+      // =====================================================================
+      const quizCounterText = document.getElementById('quizCounterText');
+      const quizBadgeNumber = document.getElementById('quizBadgeNumber');
+      const quizQuestionText = document.getElementById('quizQuestionText');
+      const quizOptionsContainer = document.getElementById('quizOptionsContainer');
+      const quizFeedbackBox = document.getElementById('quizFeedbackBox');
+      const quizFeedbackText = document.getElementById('quizFeedbackText');
+      const quizCard = document.getElementById('quizCard');
+      const quizDots = document.querySelectorAll('.quiz-dot');
+
+      function renderQuizQuestion() {
+        const q = QUIZ_QUESTIONS[state.quizIndex];
+        quizCounterText.textContent = `${state.quizIndex + 1} / 3`;
+        quizBadgeNumber.textContent = q.badge;
+        quizQuestionText.textContent = q.question;
+
+        quizDots.forEach((dot, idx) => {
+          if (idx < state.quizIndex) {
+            dot.className = 'quiz-dot h-1.5 rounded-full bg-emerald-400/90 transition-all duration-300';
+          } else if (idx === state.quizIndex) {
+            dot.className = 'quiz-dot h-1.5 rounded-full bg-rose-400 transition-all duration-300';
+          } else {
+            dot.className = 'quiz-dot h-1.5 rounded-full bg-white/15 transition-all duration-300';
+          }
+        });
+
+        quizFeedbackBox.classList.remove('opacity-100');
+        quizFeedbackBox.classList.add('opacity-0');
+        quizFeedbackText.textContent = '';
+
+        quizOptionsContainer.innerHTML = '';
+        q.options.forEach((opt) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className =
+            'w-full text-left px-4 py-3.5 rounded-2xl bg-white/[0.05] hover:bg-white/[0.11] border border-white/10 hover:border-white/25 text-xs sm:text-sm text-zinc-100 transition-all duration-150 active:scale-[0.98]';
+          btn.textContent = opt.label;
+
+          btn.addEventListener('click', () => {
+            if (opt.correct) {
+              btn.classList.remove('bg-white/[0.05]', 'border-white/10');
+              btn.classList.add('bg-emerald-500/20', 'border-emerald-400/50', 'text-emerald-100');
+
+              setTimeout(() => {
+                if (state.quizIndex < QUIZ_QUESTIONS.length - 1) {
+                  state.quizIndex++;
+                  renderQuizQuestion();
+                } else {
+                  resetFingerprintScanner();
+                  showStage('fingerprint');
+                }
+              }, 260);
+            } else {
+              btn.classList.remove('animate-shake');
+              void btn.offsetWidth;
+              btn.classList.add('animate-shake', 'border-rose-500/50', 'bg-rose-950/30');
+
+              quizCard.classList.remove('animate-shake');
+              void quizCard.offsetWidth;
+              quizCard.classList.add('animate-shake');
+
+              quizFeedbackText.textContent = opt.roast;
+              quizFeedbackBox.classList.remove('opacity-0');
+              quizFeedbackBox.classList.add('opacity-100');
+
+              setTimeout(() => {
+                btn.classList.remove('animate-shake');
+                quizCard.classList.remove('animate-shake');
+              }, 450);
+            }
+          });
+
+          quizOptionsContainer.appendChild(btn);
+        });
+      }
+
+      // =====================================================================
+      // STAGE 3: FINGERPRINT / HEART-RING HOLD TO UNLOCK
+      // =====================================================================
+      const fingerprintHoldBtn = document.getElementById('fingerprintHoldBtn');
+      const holdProgressCircle = document.getElementById('holdProgressCircle');
+      const holdPercentText = document.getElementById('holdPercentText');
+      const fingerprintStatus = document.getElementById('fingerprintStatus');
+      const fingerprintIcon = document.getElementById('fingerprintIcon');
+
+      const RING_CIRCUMFERENCE = 2 * Math.PI * 60;
+      let holdUnlocked = false;
+
+      function setRingProgress(ratio) {
+        const clamped = Math.max(0, Math.min(1, ratio));
+        holdProgressCircle.style.strokeDashoffset = String(RING_CIRCUMFERENCE * (1 - clamped));
+        if (clamped > 0 && !holdUnlocked) {
+          holdPercentText.textContent = `${Math.round(clamped * 100)}%`;
+        } else if (!holdUnlocked) {
+          holdPercentText.textContent = 'HOLD';
+        }
+      }
+
+      function resetFingerprintScanner() {
+        holdUnlocked = false;
+        state.holdStartTime = null;
+        if (state.holdRaf) {
+          cancelAnimationFrame(state.holdRaf);
+          state.holdRaf = null;
+        }
+        setRingProgress(0);
+        fingerprintIcon.classList.remove('text-rose-400', 'scale-110');
+        fingerprintIcon.classList.add('text-zinc-200');
+        fingerprintStatus.textContent = 'Press & hold firmly';
+        fingerprintStatus.className = 'mt-6 h-6 text-xs font-medium text-zinc-400 tracking-wide transition-all';
+      }
+
+      function cancelFingerprintHold() {
+        if (holdUnlocked) return;
+        if (state.holdRaf) {
+          cancelAnimationFrame(state.holdRaf);
+          state.holdRaf = null;
+        }
+        state.holdStartTime = null;
+        setRingProgress(0);
+        fingerprintIcon.classList.remove('text-rose-400', 'scale-110');
+        fingerprintStatus.textContent = 'Released early — hold until full';
+        fingerprintStatus.className = 'mt-6 h-6 text-xs font-medium text-zinc-400 tracking-wide transition-all';
+      }
+
+      function stepFingerprintHold(timestamp) {
+        if (holdUnlocked) return;
+        if (!state.holdStartTime) {
+          state.holdStartTime = timestamp;
+        }
+        const elapsed = timestamp - state.holdStartTime;
+        const ratio = elapsed / state.holdDuration;
+
+        setRingProgress(ratio);
+        fingerprintStatus.textContent = 'Scanning... keep holding';
+        fingerprintStatus.className = 'mt-6 h-6 text-xs font-medium text-rose-300 tracking-wide transition-all';
+
+        if (ratio >= 1) {
+          holdUnlocked = true;
+          setRingProgress(1);
+          holdPercentText.textContent = '100%';
+          fingerprintIcon.classList.add('text-rose-400', 'scale-110');
+          fingerprintStatus.textContent = 'Access granted 🔓';
+          fingerprintStatus.className = 'mt-6 h-6 text-sm font-semibold text-emerald-300 tracking-wide transition-all';
+
+          setTimeout(() => {
+            startCatInterlude();
+          }, 650);
+          return;
+        }
+
+        state.holdRaf = requestAnimationFrame(stepFingerprintHold);
+      }
+
+      function beginFingerprintHold(e) {
+        e.preventDefault();
+        if (holdUnlocked) return;
+        if (state.holdRaf) cancelAnimationFrame(state.holdRaf);
+        state.holdStartTime = performance.now();
+        fingerprintIcon.classList.add('text-rose-400', 'scale-110');
+        state.holdRaf = requestAnimationFrame(stepFingerprintHold);
+      }
+
+      fingerprintHoldBtn.addEventListener('mousedown', beginFingerprintHold);
+      fingerprintHoldBtn.addEventListener('touchstart', beginFingerprintHold, { passive: false });
+
+      window.addEventListener('mouseup', () => {
+        if (state.currentStage === 'fingerprint' && state.holdStartTime && !holdUnlocked) {
+          cancelFingerprintHold();
+        }
+      });
+      window.addEventListener('touchend', () => {
+        if (state.currentStage === 'fingerprint' && state.holdStartTime && !holdUnlocked) {
+          cancelFingerprintHold();
+        }
+      });
+
+      // =====================================================================
+      // STAGE 4: KITTEN BIRTHDAY VIDEO ("cat.mp4")
+      // =====================================================================
+      const catVideo = document.getElementById('catVideo');
+      const catFallbackCard = document.getElementById('catFallbackCard');
+
+      function startCatInterlude() {
+        showStage('cat');
+        pauseMusicForCat();
+
+        catFallbackCard.classList.add('hidden');
+        catVideo.classList.remove('hidden');
+        catVideo.muted = false;
+        catVideo.currentTime = 0;
+        lastMeowTime = 0;
+
+        catVideo.play().catch(() => {
+          if (catVideo.error) {
+            catVideo.classList.add('hidden');
+            catFallbackCard.classList.remove('hidden');
+            startCatCanvasFallback();
+          }
+        });
+      }
+
+      catVideo.addEventListener('error', () => {
+        catVideo.classList.add('hidden');
+        catFallbackCard.classList.remove('hidden');
+        startCatCanvasFallback();
+      });
+
+      catVideo.addEventListener('ended', () => {
+        startMoodShiftBridge();
+      });
+
+      document.getElementById('skipCatBtn').addEventListener('click', () => {
+        startMoodShiftBridge();
+      });
+
+      document.getElementById('catContinueFallbackBtn').addEventListener('click', () => {
+        startMoodShiftBridge();
+      });
+
+      // =====================================================================
+      // STAGE 5: MOOD-SHIFT BRIDGE
+      // =====================================================================
+      const bridgeLine1 = document.getElementById('bridgeLine1');
+      const bridgeLine2 = document.getElementById('bridgeLine2');
+
+      function startMoodShiftBridge() {
+        showStage('bridge');
+        resumeMusicAfterCat(1500);
+
+        bridgeLine1.classList.remove('opacity-100', 'translate-y-0');
+        bridgeLine1.classList.add('opacity-0', 'translate-y-3');
+        bridgeLine2.classList.remove('opacity-100', 'translate-y-0');
+        bridgeLine2.classList.add('opacity-0', 'translate-y-3');
+
+        const t1 = setTimeout(() => {
+          bridgeLine1.classList.remove('opacity-0', 'translate-y-3');
+          bridgeLine1.classList.add('opacity-100', 'translate-y-0');
+        }, 350);
+
+        const t2 = setTimeout(() => {
+          bridgeLine2.classList.remove('opacity-0', 'translate-y-3');
+          bridgeLine2.classList.add('opacity-100', 'translate-y-0');
+        }, 1850);
+
+        const t3 = setTimeout(() => {
+          startStorySlideshow('childhood', 0);
+        }, 4300);
+
+        state.bridgeTimers.push(t1, t2, t3);
+      }
+
+      // =====================================================================
+      // STAGE 6 & 8: STORY SLIDESHOW ENGINE
+      // =====================================================================
+      const storyImage = document.getElementById('storyImage');
+      const storyFallback = document.getElementById('storyFallback');
+      const storyFallbackFilename = document.getElementById('storyFallbackFilename');
+      const storyProgressBars = document.getElementById('storyProgressBars');
+      const storyChapterLabel = document.getElementById('storyChapterLabel');
+      const storyIndexLabel = document.getElementById('storyIndexLabel');
+      const storyPausedBadge = document.getElementById('storyPausedBadge');
+      const storyCaption = document.getElementById('storyCaption');
+
+      function clearStoryTimer() {
+        if (state.storyTimer) {
+          cancelAnimationFrame(state.storyTimer);
+          state.storyTimer = null;
+        }
+      }
+
+      function buildStoryProgressBars(count) {
+        storyProgressBars.innerHTML = '';
+        for (let i = 0; i < count; i++) {
+          const track = document.createElement('div');
+          track.className = 'flex-1 h-[2.5px] rounded-full bg-white/25 overflow-hidden';
+
+          const fill = document.createElement('div');
+          fill.className = 'story-fill h-full bg-white rounded-full w-0';
+          track.appendChild(fill);
+          storyProgressBars.appendChild(track);
+        }
+      }
+
+      function paintProgressBars(activeIndex, activeRatio) {
+        const fills = storyProgressBars.querySelectorAll('.story-fill');
+        fills.forEach((fill, idx) => {
+          if (idx < activeIndex) {
+            fill.style.width = '100%';
+          } else if (idx === activeIndex) {
+            fill.style.width = `${Math.max(0, Math.min(100, activeRatio * 100))}%`;
+          } else {
+            fill.style.width = '0%';
+          }
+        });
+      }
+
+      function startStorySlideshow(mode, startIndex = 0) {
+        state.storyMode = mode;
+        state.storySlides = mode === 'childhood' ? CHILDHOOD_SLIDES : PRESENT_SLIDES;
+        state.storyIndex = Math.max(0, Math.min(state.storySlides.length - 1, startIndex));
+        state.storyPaused = false;
+        storyPausedBadge.classList.add('hidden');
+
+        if (mode === 'present' && state.musicEnabled && bgMusic.paused && !usingFallbackSynth) {
+          fadeMusicTo(0.75, 1100);
+        }
+
+        buildStoryProgressBars(state.storySlides.length);
+        showStage('story');
+        loadStorySlide(state.storyIndex);
+      }
+
+      function loadStorySlide(index) {
+        clearStoryTimer();
+        state.storyIndex = index;
+        state.storyElapsed = 0;
+
+        const slide = state.storySlides[index];
+        const chapterTitle =
+          state.storyMode === 'childhood'
+            ? 'Childhood Memories'
+            : slide.group || 'Present Moments';
+
+        storyChapterLabel.textContent = chapterTitle;
+        storyIndexLabel.textContent = `${index + 1} / ${state.storySlides.length}`;
+        storyCaption.textContent = slide.caption;
+
+        storyImage.classList.remove('animate-ken-burns', 'opacity-100');
+        storyImage.classList.add('opacity-0');
+        void storyImage.offsetWidth;
+        storyImage.classList.add('animate-ken-burns');
+
+        storyFallback.classList.add('hidden');
+        storyFallbackFilename.textContent = slide.src;
+
+        storyImage.onload = () => {
+          storyFallback.classList.add('hidden');
+          storyImage.classList.remove('opacity-0');
+          storyImage.classList.add('opacity-100');
+        };
+
+        storyImage.onerror = () => {
+          storyImage.classList.remove('opacity-100');
+          storyImage.classList.add('opacity-0');
+          storyFallback.classList.remove('hidden');
+          renderSlideFallbackArtwork(slide, state.storyMode, index);
+        };
+
+        storyImage.src = slide.src;
+        if (storyImage.complete && storyImage.naturalWidth > 0) {
+          storyFallback.classList.add('hidden');
+          storyImage.classList.remove('opacity-0');
+          storyImage.classList.add('opacity-100');
+        }
+        paintProgressBars(index, 0);
+        runStorySlideTick(performance.now());
+      }
+
+      function runStorySlideTick(lastTime) {
+        clearStoryTimer();
+
+        function frame(now) {
+          if (state.currentStage !== 'story') return;
+
+          if (!state.storyPaused) {
+            const dt = now - lastTime;
+            state.storyElapsed += dt;
+            const ratio = state.storyElapsed / state.storyDuration;
+            paintProgressBars(state.storyIndex, ratio);
+
+            if (ratio >= 1) {
+              advanceStorySlide();
+              return;
+            }
+          }
+
+          lastTime = now;
+          state.storyTimer = requestAnimationFrame(frame);
+        }
+
+        state.storyTimer = requestAnimationFrame(frame);
+      }
+
+      function advanceStorySlide() {
+        clearStoryTimer();
+        if (state.storyIndex < state.storySlides.length - 1) {
+          loadStorySlide(state.storyIndex + 1);
+        } else {
+          if (state.storyMode === 'childhood') {
+            startCandleStage();
+          } else {
+            showStage('wish');
+          }
+        }
+      }
+
+      function previousStorySlide() {
+        clearStoryTimer();
+        if (state.storyIndex > 0) {
+          loadStorySlide(state.storyIndex - 1);
+        } else {
+          loadStorySlide(0);
+        }
+      }
+
+      function setStoryHoldPaused(paused) {
+        if (state.currentStage !== 'story') return;
+        state.storyPaused = paused;
+        if (paused) {
+          storyPausedBadge.classList.remove('hidden');
+        } else {
+          storyPausedBadge.classList.add('hidden');
+        }
+      }
+
+      let holdPressTimer = null;
+      let didHoldPause = false;
+
+      function onStoryPressStart() {
+        didHoldPause = false;
+        holdPressTimer = setTimeout(() => {
+          didHoldPause = true;
+          setStoryHoldPaused(true);
+        }, 190);
+      }
+
+      function onStoryPressEnd(zone) {
+        clearTimeout(holdPressTimer);
+        if (didHoldPause) {
+          setStoryHoldPaused(false);
+          didHoldPause = false;
+          return;
+        }
+        if (zone === 'left') {
+          previousStorySlide();
+        } else {
+          advanceStorySlide();
+        }
+      }
+
+      const tapLeftZone = document.getElementById('tapLeftZone');
+      const tapRightZone = document.getElementById('tapRightZone');
+
+      tapLeftZone.addEventListener('mousedown', onStoryPressStart);
+      tapLeftZone.addEventListener('touchstart', onStoryPressStart, { passive: true });
+      tapLeftZone.addEventListener('mouseup', () => onStoryPressEnd('left'));
+      tapLeftZone.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        onStoryPressEnd('left');
+      });
+
+      tapRightZone.addEventListener('mousedown', onStoryPressStart);
+      tapRightZone.addEventListener('touchstart', onStoryPressStart, { passive: true });
+      tapRightZone.addEventListener('mouseup', () => onStoryPressEnd('right'));
+      tapRightZone.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        onStoryPressEnd('right');
+      });
+
+      // =====================================================================
+      // STAGE 7: CANDLE-BLOW TURNING POINT
+      // =====================================================================
+      const candleTapArea = document.getElementById('candleTapArea');
+      const candleFlame = document.getElementById('candleFlame');
+      const candleHalo = document.getElementById('candleHalo');
+      const candleSmokeContainer = document.getElementById('candleSmokeContainer');
+      const candlePromptText = document.getElementById('candlePromptText');
+      const candleBgWrap = document.getElementById('candleBgWrap');
+
+      function startCandleStage() {
+        state.candleBlown = false;
+        candleFlame.style.opacity = '1';
+        candleFlame.style.transform = 'scale(1)';
+        candleHalo.style.opacity = '1';
+        candleSmokeContainer.innerHTML = '';
+        candlePromptText.textContent = 'Make a wish & tap to blow the candle 🕯️';
+        candleBgWrap.classList.remove('opacity-0', 'scale-125');
+        candleBgWrap.classList.add('opacity-100', 'scale-100');
+        showStage('candle');
+      }
+
+      function spawnSmokeWisps() {
+        candleSmokeContainer.innerHTML = '';
+        for (let i = 0; i < 4; i++) {
+          const wisp = document.createElement('div');
+          wisp.className = 'absolute bottom-1 w-5 h-5 rounded-full bg-zinc-300/45 blur-md animate-smoke';
+          wisp.style.left = `${28 + i * 10}%`;
+          wisp.style.animationDelay = `${i * 180}ms`;
+          candleSmokeContainer.appendChild(wisp);
+        }
+      }
+
+      candleTapArea.addEventListener('click', () => {
+        if (state.candleBlown) return;
+        state.candleBlown = true;
+
+        candleFlame.style.opacity = '0';
+        candleFlame.style.transform = 'scale(0.1) translateY(-8px)';
+        candleHalo.style.opacity = '0';
+        candlePromptText.textContent = 'Wish sent into nineteen ✨';
+
+        spawnSmokeWisps();
+
+        setTimeout(() => {
+          candleBgWrap.classList.add('opacity-0', 'scale-125');
+        }, 650);
+
+        setTimeout(() => {
+          startStorySlideshow('present', 0);
+        }, 1650);
+      });
+
+      // =====================================================================
+      // FINAL WISH CARD & REPLAY
+      // =====================================================================
+      document.getElementById('replayExperienceBtn').addEventListener('click', () => {
+        clearAllTimers();
+        state.quizIndex = 0;
+        state.candleBlown = false;
+        resetFingerprintScanner();
+        showStage('intro');
+      });
+
+      // =====================================================================
+      // PREVIEW STAGE JUMP DRAWER
+      // =====================================================================
+      jumpDrawerBtn.addEventListener('click', () => {
+        jumpDrawer.classList.toggle('hidden');
+      });
+
+      closeJumpDrawer.addEventListener('click', () => {
+        jumpDrawer.classList.add('hidden');
+      });
+
+      document.querySelectorAll('.jump-item').forEach((item) => {
+        item.addEventListener('click', () => {
+          const target = item.getAttribute('data-jump');
+          jumpDrawer.classList.add('hidden');
+
+          if (!state.musicEnabled && target !== 'intro') {
+            state.musicEnabled = true;
+            bgMusic.volume = 0.05;
+            fadeMusicTo(0.75, 800);
+          }
+
+          switch (target) {
+            case 'intro':
+              showStage('intro');
+              break;
+            case 'quiz':
+              state.quizIndex = 0;
+              renderQuizQuestion();
+              showStage('quiz');
+              break;
+            case 'fingerprint':
+              resetFingerprintScanner();
+              showStage('fingerprint');
+              break;
+            case 'cat':
+              startCatInterlude();
+              break;
+            case 'bridge':
+              startMoodShiftBridge();
+              break;
+            case 'childhood':
+              startStorySlideshow('childhood', 0);
+              break;
+            case 'candle':
+              startCandleStage();
+              break;
+            case 'present-frock':
+              startStorySlideshow('present', 0);
+              break;
+            case 'present-guitar':
+              startStorySlideshow('present', 4);
+              break;
+            case 'present-memo':
+              startStorySlideshow('present', 16);
+              break;
+            case 'wish':
+              showStage('wish');
+              break;
+          }
+        });
+      });
+
+      // Initialize audio indicator and wish backdrop
+      updateAudioIndicator();
+      renderWishFallbackBackdrop();
+    })();
+  </script>
+</body>
+</html>
